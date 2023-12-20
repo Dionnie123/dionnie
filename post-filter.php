@@ -2,12 +2,12 @@
 
 $categories = get_categories(); ?>
 
-<div class="container ">
-    <div class="row justify-content-end mt-3 gx-3">
+<div class="container my-3">
+    <div class="row justify-content-end ">
         <form onsubmit="submitForm()">
             <div class="col d-flex d-grid gap-2">
 
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search by Title" name="title_search"
                         aria-label="Search by Title" aria-describedby="basic-addon2"
                         value="<?php echo esc_attr(  $_GET['title_search']  ); ?>">
