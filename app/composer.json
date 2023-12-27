@@ -1,6 +1,5 @@
 {
     "require": {
         "clausnz/php-helpers": "^0.2.1"
-  
     }
 }
