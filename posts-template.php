@@ -1,28 +1,20 @@
 <?php 
-require 'app/vendor/autoload.php';
-require 'MyHelper.php';
 
-use CNZ\Helpers\Util as util;
+require_once get_template_directory() . '/helpers.php';
 
 $args = array(
     'post_type' => 'post',
     'posts_per_page' => 12, 
     'paged' => $paged,
     'ignore_sticky_posts' => 1, 
-    'orderby' => MyHelper::get_value('orderby', null, 'date'),
-    'order' => MyHelper::get_value('order', ['ASC', 'DESC'], 'DESC'),
-    's' => MyHelper::get_value('title_search', null, ''),
+    'orderby' => $_GET['orderby'] ?? 'date',
+    'order' =>  $_GET['order'] ?? 'XXX',
+    's' => $_GET['title_search'] ?? ''
 );
+$args['category_name'] = get_query_var('category_name') ?? null;
+$query = new WP_Query($args);?>
 
-$categoryFilter = get_query_var('category_name');
-if ($categoryFilter) {
-    $args['category_name'] = $categoryFilter;
-}
-
-$query = new WP_Query($args);
-
-get_template_part('post-filter');
-?>
+<?php get_template_part('posts-filter'); ?>
 
 <div class="container">
     <?php if ($query->have_posts()) : ?>
@@ -31,7 +23,7 @@ get_template_part('post-filter');
         <?php get_template_part('post-item'); ?>
         <?php endwhile; ?>
     </div>
-    <?php MyHelper::bootstrap_pagination($query, true, $args); ?>
+    <?php bootstrap_pagination($query, $args) ?>
     <?php else : ?>
     <div class="container">
         <h3>No Posts Found</h3>

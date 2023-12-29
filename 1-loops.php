@@ -1,5 +1,5 @@
 <?php
-//1. Access main/global query
+//1. Access main/global query  
 ?>
 <?php if(have_posts()){ ?>
 <?php  while (have_posts()){ ?>
