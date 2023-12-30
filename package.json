@@ -1,0 +1,34 @@
+{
+  "name": "dionnie_theme",
+  "version": "1.0.0",
+  "description": "My very first wordpress theme.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dionnie123/dionnie_theme.git"
+  },
+  "author": "Mark Dionnie Bulingit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dionnie123/dionnie_theme/issues"
+  },
+  "homepage": "https://github.com/Dionnie123/dionnie_theme#readme",
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
+    "@babel/register": "^7.23.7",
+    "browser-sync": "^2.29.3",
+    "gulp": "^4.0.2",
+    "gulp-cache": "^1.1.3",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^9.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-useref": "^5.0.0",
+    "sass": "^1.69.5"
+  }
+}
