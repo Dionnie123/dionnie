@@ -39,11 +39,26 @@ gulp.task("styles", function () {
 
   return es
     .concat(appFiles)
-    .pipe(concat("styles.min.css"))
+    .pipe(concat("bundle.min.css"))
     .pipe(gulpIf("*.css", cssnano()))
     .pipe(postcss([autoprefixer()]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest("dist/css/"))
+    .pipe(
+      browserSync.reload({
+        stream: true,
+      })
+    );
+});
+
+gulp.task("js", function () {
+  var appFiles = gulp.src(paths.scripts.src);
+
+  return es
+    .concat(appFiles)
+    .pipe(concat("bundle.min.js"))
+    .pipe(gulpIf("*.js", uglify()))
+    .pipe(gulp.dest("dist/js/"))
     .pipe(
       browserSync.reload({
         stream: true,
