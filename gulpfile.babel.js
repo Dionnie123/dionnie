@@ -35,7 +35,6 @@ gulp.task("styles", function () {
   var appFiles = gulp
     .src(paths.styles.src)
     .pipe(sourcemaps.init({ loadMaps: true }))
-
     .pipe(sass({ style: "compressed" }).on("error", gutil.log));
 
   return es
@@ -44,21 +43,12 @@ gulp.task("styles", function () {
     .pipe(gulpIf("*.css", cssnano()))
     .pipe(postcss([autoprefixer()]))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("dist/css/"));
-
-  /*  return gulp
-    .src(paths.styles.src)
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(sass({ outputStyle: "compressed" }))
-    .pipe(sourcemaps.write())
-
     .pipe(gulp.dest("dist/css/"))
-
     .pipe(
       browserSync.reload({
         stream: true,
       })
-    ); */
+    );
 });
 
 gulp.task("optimize", function () {
