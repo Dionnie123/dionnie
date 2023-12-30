@@ -8,12 +8,11 @@ $args = array(
     'paged' => $paged,
     'ignore_sticky_posts' => 1, 
     'orderby' => $_GET['orderby'] ?? 'date',
-    'order' =>  $_GET['order'] ?? 'XXX',
+    'order' =>  $_GET['order'] ?? 'DESC',
     's' => $_GET['title_search'] ?? ''
 );
 $args['category_name'] = get_query_var('category_name') ?? null;
 $query = new WP_Query($args);?>
-
 <?php get_template_part('posts-filter'); ?>
 
 <div class="container">
