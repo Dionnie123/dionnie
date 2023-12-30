@@ -38,7 +38,8 @@
     "autoprefixer": "^10.4.16",
     "event-stream": "^4.0.1",
     "gulp-sourcemaps": "^3.0.0",
-    "gutil": "^1.6.4"
+    "gutil": "^1.6.4",
+    "postcss-nested": "^6.0.1"
   },
   "browserslist": [
     "defaults"
