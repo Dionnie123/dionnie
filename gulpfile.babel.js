@@ -1,43 +1,73 @@
-import sass from "gulp-sass";
+import gulp from "gulp";
+
 import browserSync from "browser-sync";
 import useref from "gulp-useref";
 import uglify from "gulp-uglify";
 import gulpIf from "gulp-if";
 import cssnano from "gulp-cssnano";
-import gulp from "gulp";
 
-//Say Hello
-gulp.task("hello", async function () {
-  console.log("Hello Zell");
-});
+import es from "event-stream";
+import concat from "gulp-concat";
+import gutil from "gutil";
+import autoprefixer from "autoprefixer";
+import postcss from "gulp-postcss";
 
-//Convert a sass file into a css file
-gulp.task("sass-one", function () {
-  return gulp
-    .src("src/scss/styles.scss")
-    .pipe(sass()) // Converts Sass to CSS with gulp-sass
-    .pipe(gulp.dest("src/css"));
-});
+import sourcemaps from "gulp-sourcemaps";
 
-//Convert multiple sass files using pattern matching
-gulp.task("sass-all", function () {
-  return gulp
-    .src("src/scss/**/*.scss")
-    .pipe(sass()) // Converts Sass to CSS with gulp-sass
-    .pipe(gulp.dest("src/css"))
+var sass = require("gulp-sass")(require("sass"));
+var paths = {
+  root: "./src",
+  html: {
+    src: "src/*.html",
+  },
+  styles: {
+    src: "src/scss/**/*.scss",
+    dest: "src/css",
+  },
+  scripts: {
+    src: "src/js/**/*.js",
+    dest: "src/js",
+  },
+};
+
+gulp.task("styles", function () {
+  var appFiles = gulp
+    .src(paths.styles.src)
+    .pipe(sourcemaps.init({ loadMaps: true }))
+
+    .pipe(sass({ style: "compressed" }).on("error", gutil.log));
+
+  return es
+    .concat(appFiles)
+    .pipe(concat("styles.min.css"))
+    .pipe(gulpIf("*.css", cssnano()))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest("dist/css/"));
+
+  /*  return gulp
+    .src(paths.styles.src)
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sass({ outputStyle: "compressed" }))
+    .pipe(sourcemaps.write())
+
+    .pipe(gulp.dest("dist/css/"))
+
     .pipe(
       browserSync.reload({
         stream: true,
       })
-    );
+    ); */
 });
 
 gulp.task("optimize", function () {
   return gulp
-    .src("src/*.html")
+    .src(paths.html.src)
+    .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(useref())
     .pipe(gulpIf("*.js", uglify()))
     .pipe(gulpIf("*.css", cssnano()))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("dist"))
     .pipe(
       browserSync.reload({
@@ -50,9 +80,9 @@ gulp.task("optimize", function () {
 gulp.task("watch", function () {
   browserSync.create();
   browserSync.init({
-    server: "./src",
+    server: paths.root,
   });
-  gulp.watch("src/scss/**/*.scss", gulp.series("sass-all"));
-  gulp.watch("src/*.html", gulp.series("optimize"));
-  gulp.watch("src/js/**/*.js", gulp.series("optimize"));
+  gulp.watch(paths.styles.src, gulp.series("styles"));
+  gulp.watch(paths.html.src, gulp.series("optimize"));
+  gulp.watch(paths.scripts.src, gulp.series("optimize"));
 });
