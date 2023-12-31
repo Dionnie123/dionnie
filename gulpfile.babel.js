@@ -1,21 +1,15 @@
-import gulp from "gulp";
-
-import browserSync from "browser-sync";
-import useref from "gulp-useref";
-import uglify from "gulp-uglify";
-import gulpIf from "gulp-if";
-import cssnano from "gulp-cssnano";
-
-import es from "event-stream";
-import concat from "gulp-concat";
-import gutil from "gutil";
-import autoprefixer from "autoprefixer";
+import { src, dest } from "gulp";
+import yargs from "yargs";
+import cleanCss from "gulp-clean-css";
+import gulpif from "gulp-if";
 import postcss from "gulp-postcss";
-import postnested from "postcss-nested";
-
 import sourcemaps from "gulp-sourcemaps";
+import autoprefixer from "autoprefixer";
+import { src, dest, watch } from "gulp";
+const PRODUCTION = yargs.argv.prod;
 
 var sass = require("gulp-sass")(require("sass"));
+
 var paths = {
   root: "./src",
   html: {
@@ -31,64 +25,16 @@ var paths = {
   },
 };
 
-gulp.task("styles", function () {
-  var appFiles = gulp
-    .src(paths.styles.src)
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(sass({ style: "compressed" }).on("error", gutil.log));
+export const styles = () => {
+  return src(paths.styles.src, "src/scss/admin.scss")
+    .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
+    .pipe(sass().on("error", sass.logError))
+    .pipe(gulpif(PRODUCTION, postcss([autoprefixer])))
+    .pipe(gulpif(PRODUCTION, cleanCss({ compatibility: "ie8" })))
+    .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
+    .pipe(dest("dist/css"));
+};
 
-  return es
-    .concat(appFiles)
-    .pipe(concat("bundle.min.css"))
-    .pipe(gulpIf("*.css", cssnano()))
-    .pipe(postcss([autoprefixer()]))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest("dist/css/"))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
-});
-
-gulp.task("js", function () {
-  var appFiles = gulp.src(paths.scripts.src);
-
-  return es
-    .concat(appFiles)
-    .pipe(concat("bundle.min.js"))
-    .pipe(gulpIf("*.js", uglify()))
-    .pipe(gulp.dest("dist/js/"))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
-});
-
-gulp.task("optimize", function () {
-  return gulp
-    .src(paths.html.src)
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(useref())
-    .pipe(gulpIf("*.js", uglify()))
-    .pipe(gulpIf("*.css", cssnano()))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest("dist"))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
-});
-
-//Watch out for changes
-gulp.task("watch", function () {
-  browserSync.create();
-  browserSync.init({
-    server: paths.root,
-  });
-  gulp.watch(paths.styles.src, gulp.series("styles"));
-  gulp.watch(paths.html.src, gulp.series("optimize"));
-  gulp.watch(paths.scripts.src, gulp.series("optimize"));
-});
+export const watchForChanges = () => {
+  watch("src/scss/**/*.scss", styles);
+};
