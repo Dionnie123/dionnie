@@ -57,7 +57,14 @@ export const copy = () => {
     "src/**/*",
     "!src/{images,js,scss}",
     "!src/{images,js,scss}/**/*",
-  ]).pipe(dest("dist"));
+  ])
+    .pipe(
+      gulpif(
+        (file) => file.relative.split(".").pop() !== "zip",
+        replace("_themename", info.name)
+      )
+    )
+    .pipe(dest("dist"));
 };
 
 export const scripts = () => {
@@ -118,13 +125,6 @@ export const compress = () => {
     "!package.json",
     "!package-lock.json",
   ])
-    .pipe(
-      gulpif(
-        (file) => file.relative.split(".").pop() !== "zip",
-        replace("_themename", info.name)
-      )
-    )
-
     .pipe(zip(`${info.name}.zip`))
     .pipe(dest("bundled"));
 };
