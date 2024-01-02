@@ -1,5 +1,5 @@
 {
-  "name": "dionnie_theme",
+  "name": "dionnie",
   "version": "1.0.0",
   "description": "My very first wordpress theme.",
   "main": "gulpfile.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dionnie123/dionnie_theme.git"
+    "url": "git+https://github.com/Dionnie123/dionnie.git"
   },
   "author": "Mark Dionnie Bulingit",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Dionnie123/dionnie_theme/issues"
+    "url": "https://github.com/Dionnie123/dionnie/issues"
   },
-  "homepage": "https://github.com/Dionnie123/dionnie_theme#readme",
+  "homepage": "https://github.com/Dionnie123/dionnie#readme",
   "devDependencies": {
     "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.23.7",

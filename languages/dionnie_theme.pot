@@ -1,8 +1,8 @@
-# Copyright (C) 2024 dionnie_theme
-# This file is distributed under the same license as the dionnie_theme package.
+# Copyright (C) 2024 dionnie
+# This file is distributed under the same license as the dionnie package.
 msgid ""
 msgstr ""
-"Project-Id-Version: dionnie_theme\n"
+"Project-Id-Version: dionnie\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
