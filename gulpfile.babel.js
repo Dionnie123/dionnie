@@ -72,7 +72,7 @@ export const copy = () => {
 };
 
 export const scripts = () => {
-  return src(["src/js/bundle.js", "src/js/admin.js"])
+  return src(["src/js/bundle.js", "src/js/bootstrap.js", "src/js/admin.js"])
     .pipe(named())
     .pipe(
       webpack({
