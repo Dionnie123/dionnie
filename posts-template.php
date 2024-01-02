@@ -17,7 +17,7 @@ $query = new WP_Query($args); ?>
 
 <div class="container">
     <?php if ($query->have_posts()) : ?>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gx-3 gy-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 gx-3 gy-3">
             <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <?php get_template_part('post-item'); ?>
             <?php endwhile; ?>

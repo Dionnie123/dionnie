@@ -10,7 +10,7 @@
             class="card-img-top mh-50" alt="Placeholder Image">
         <?php endif; ?>
         <div class="card-body">
-            <h4 class="card-title"><?php esc_html(the_title()); ?></h4>
+            <h5 class="card-title"><?php esc_html(the_title()); ?></h5>
             <p class="card-text">
                 <?php echo wp_kses_post(wp_trim_words(get_the_excerpt(), 15)); // Limit excerpt to 15 words 
                 ?>

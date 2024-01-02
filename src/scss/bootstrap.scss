@@ -2,15 +2,15 @@
   font-family: "re4";
   src: url("../fonts/re4.ttf");
 }
-@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
-$font-family-sans-serif: "re4", -apple-system, BlinkMacSystemFont, "Segoe UI",
-  Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+$font-family-sans-serif: "Poppins", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
 $theme-colors: (
   primary: #25408f,
   // override some or all base color definitions
-  secondary: #8f5325,
+  secondary: #b6bfd9,
   success: #3e8d63,
   dark: #343a40,
   facebook: #3b5998,
