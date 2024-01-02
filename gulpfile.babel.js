@@ -36,7 +36,11 @@ var paths = {
 };
 
 export const styles = () => {
-  return src([paths.styles.src, "src/scss/admin.scss"])
+  return src([
+    paths.styles.src,
+    "src/scss/bootstrap.scss",
+    "src/scss/admin.scss",
+  ])
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass().on("error", sass.logError))
     .pipe(gulpif(PRODUCTION, postcss([autoprefixer])))

@@ -1,26 +1,3 @@
-@font-face {
-  font-family: "re4";
-  src: url("../fonts/re4.ttf");
-}
-
-$colour: grey;
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-span {
-  font-family: "re4";
-}
-
-body {
-  background-color: $colour;
-}
-
-h5 {
+h4 {
   color: orange;
 }
