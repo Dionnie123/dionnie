@@ -83,7 +83,7 @@ export const scripts = () => {
               use: {
                 loader: "babel-loader",
                 options: {
-                  presets: [],
+                  presets: ["@babel/preset-env"], //or ['babel-preset-env']
                 },
               },
             },

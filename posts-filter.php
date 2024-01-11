@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $categories = get_categories(); ?>
 
@@ -10,15 +10,15 @@ $categories = get_categories(); ?>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search by Title" name="title_search"
                         aria-label="Search by Title" aria-describedby="basic-addon2"
-                        value="<?php echo esc_attr(  $_GET['title_search']  ); ?>">
+                        value="<?php echo esc_attr($_GET['title_search']); ?>">
                     <button class="btn btn-secondary clear" type="button" id="button-addon2"
                         onclick="clear()">X</button>
                 </div>
 
                 <input type="hidden" name="orderby"
-                    value="<?php echo esc_attr( isset( $_GET['orderby'] ) ? $_GET['orderby'] : '' ); ?>">
+                    value="<?php echo esc_attr(isset($_GET['orderby']) ? $_GET['orderby'] : ''); ?>">
                 <input type="hidden" name="order"
-                    value="<?php echo esc_attr( isset( $_GET['order'] ) ? $_GET['order'] : '' ); ?>">
+                    value="<?php echo esc_attr(isset($_GET['order']) ? $_GET['order'] : ''); ?>">
                 <div class="input-group-append">
                     <button class="btn btn-secondary" onclick="submitForm()">Search</button>
                 </div>
@@ -46,13 +46,6 @@ $categories = get_categories(); ?>
                         <option value='&orderby=title&order=desc'>Title DESC</option>
                     </select>
                 </div>
-
-
-
-
-
-
-
             </div>
         </form>
 
@@ -69,10 +62,6 @@ $categories = get_categories(); ?>
         });
     });
 }(jQuery));
-
-
-
-
 
 function submitForm() {
     (function($) {

@@ -10,13 +10,17 @@ function after_pagination()
     echo '<h1>After pagination</h1>';
 }
 add_action('_themename_after_pagination', 'after_pagination');
+/*
+USAGE:
+<?php do_action('_themename_after_pagination') ?>
+*/
 
 // Wordpress Hooks
 /* function paginitization($query)
 {
-    if ($query->is_main_query()) {
-        $query->set('posts_per_page', 2);
-    }
+if ($query->is_main_query()) {
+$query->set('posts_per_page', 2);
+}
 }
 add_action('pre_get_posts', 'paginitization', 10, 1); */
 
@@ -28,7 +32,10 @@ function no_posts_text($text)
     return esc_html("WALA NA!!!");
 }
 add_filter('_themename_no_posts_text', 'no_posts_text', 10, 1);
-
+/*
+USAGE:
+<h3><?php _e(apply_filters('_themename_no_posts_text',   esc_html("No Posts Found")), '_themename')  ?></h3>
+*/
 
 //Wordpress Filter
 function filter_title($text)
