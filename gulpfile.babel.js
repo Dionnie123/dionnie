@@ -12,7 +12,6 @@ import del from "del";
 import browserSync from "browser-sync";
 import zip from "gulp-zip";
 import info from "./package.json";
-
 import replace from "gulp-replace";
 import wpPot from "gulp-wp-pot";
 
@@ -36,11 +35,7 @@ var paths = {
 };
 
 export const styles = () => {
-  return src([
-    paths.styles.src,
-    "src/scss/bootstrap.scss",
-    "src/scss/admin.scss",
-  ])
+  return src([paths.styles.src, "src/scss/admin.scss"])
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass().on("error", sass.logError))
     .pipe(gulpif(PRODUCTION, postcss([autoprefixer])))
@@ -61,18 +56,11 @@ export const copy = () => {
     "src/**/*",
     "!src/{images,js,scss}",
     "!src/{images,js,scss}/**/*",
-  ])
-    .pipe(
-      gulpif(
-        (file) => file.relative.split(".").pop() !== "zip",
-        replace("_themename", info.name)
-      )
-    )
-    .pipe(dest("dist"));
+  ]).pipe(dest("dist"));
 };
 
 export const scripts = () => {
-  return src(["src/js/bundle.js", "src/js/bootstrap.js", "src/js/admin.js"])
+  return src(["src/js/bundle.js", "src/js/admin.js"])
     .pipe(named())
     .pipe(
       webpack({
@@ -129,6 +117,7 @@ export const compress = () => {
     "!package.json",
     "!package-lock.json",
   ])
+    .pipe(replace("_themename", info.name))
     .pipe(zip(`${info.name}.zip`))
     .pipe(dest("bundled"));
 };
