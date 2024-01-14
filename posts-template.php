@@ -9,7 +9,7 @@ $args = array(
     'ignore_sticky_posts' => 1,
     'orderby' => $_GET['orderby'] ?? 'date',
     'order' =>  $_GET['order'] ?? 'DESC',
-    's' => $_GET['title_search'] ?? ''
+    's' => $_GET['s'] ?? ''
 );
 $args['category_name'] = get_query_var('category_name') ?? null;
 $query = new WP_Query($args); ?>

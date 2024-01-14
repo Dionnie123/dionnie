@@ -30,3 +30,9 @@ $theme-colors: (
 h4 {
   color: orange;
 }
+
+.custom-logo {
+  width: 50px;
+  height: 100%;
+  filter: brightness(0) invert(1);
+}
