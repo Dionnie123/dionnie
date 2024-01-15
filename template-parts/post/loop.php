@@ -1,6 +1,5 @@
 <?php
 
-require_once get_template_directory() . '/helpers.php';
 
 $args = array(
     'post_type' => 'post',
@@ -13,7 +12,7 @@ $args = array(
 );
 $args['category_name'] = get_query_var('category_name') ?? null;
 $query = new WP_Query($args); ?>
-<?php get_template_part('posts-filter'); ?>
+<?php get_template_part('template-parts/post/filter'); ?>
 
 <main role="main">
     <div class="container">
@@ -22,7 +21,7 @@ $query = new WP_Query($args); ?>
                 <?php if ($query->have_posts()) : ?>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 gx-3 gy-3">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
-                            <?php get_template_part('post-item'); ?>
+                            <?php get_template_part('template-parts/post/content'); ?>
                         <?php endwhile; ?>
                     </div>
                     <?php bootstrap_pagination($query, $args) ?>

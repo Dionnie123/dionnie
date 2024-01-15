@@ -1,5 +1,4 @@
 <article <?php post_class('c-post col') ?>>
-
     <div class="card h-100">
         <?php if (has_post_thumbnail()) : ?>
         <img style="min-height: 180px;max-height: 180px; object-fit: cover;"
@@ -18,9 +17,7 @@
             </p>
 
             <a href="<?php esc_url(the_permalink());  ?>" class="btn btn-primary btn-sm">
-                <i class="fa fa-2x fa-podcast " aria-hidden="true"></i>
-                Read More</a>
+                <span class="btn-label"><i class="fa fa-check"></i></span>&nbsp;Read more </a>
         </div>
     </div>
-
 </article>
