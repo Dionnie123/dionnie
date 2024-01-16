@@ -5,3 +5,4 @@ require_once(get_template_directory() . '/dist/lib/theme-support.php');
 require_once(get_template_directory() . '/dist/lib/enqueue-assets.php');
 require_once(get_template_directory() . '/4-hooks-and-filters.php');
 require_once(get_template_directory() . '/dist/lib/sidebars.php');
+require_once(get_template_directory() . '/dist/lib/navigation.php');
