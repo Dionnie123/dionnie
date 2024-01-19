@@ -5,4 +5,5 @@ import * as bootstrap from "../../node_modules/bootstrap/dist/js/bootstrap.esm.m
 console.log("bootstrap js");
 
 import "./components/slider";
+import "./components/navigation";
 console.log("bundle");

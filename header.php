@@ -11,16 +11,12 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
 
-
             <div>
                 <a href="<?php echo esc_html(home_url('/')) ?>" class="">
                     <?php _themename_the_custom_logo() ?>
 
                 </a>
             </div>
-
-
-
 
             <div class="">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -32,11 +28,6 @@
                 </ul>
             </div>
 
-
-
-
-
-
             <div class="text-end">
 
                 <?php get_search_form(true) ?>
@@ -44,7 +35,7 @@
         </div>
     </div>
     <div class="c-navigation">
-        <div class="o-container">
+        <div class="container">
             <nav class="header-nav" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
                 <?php wp_nav_menu(array('theme_location' => 'main-menu')) ?>
             </nav>
