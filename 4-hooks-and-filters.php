@@ -29,7 +29,7 @@ add_action('pre_get_posts', 'paginitization', 10, 1); */
 //Custom Filter
 function no_posts_text($text)
 {
-    return esc_html("WALA NA!!!");
+return esc_html("WALA NA!!!");
 }
 add_filter('_themename_no_posts_text', 'no_posts_text', 10, 1);
 /*
@@ -38,8 +38,8 @@ USAGE:
 */
 
 //Wordpress Filter
-function filter_title($text)
+/* function filter_title($text)
 {
-    return esc_html("Title: " . $text);
+return esc_html("Title: " . $text);
 }
-add_filter('the_title', 'filter_title', 10, 1);
+add_filter('the_title', 'filter_title', 10, 1); */

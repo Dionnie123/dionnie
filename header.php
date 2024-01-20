@@ -36,7 +36,8 @@
     </div>
     <div class="c-navigation">
         <div class="container">
-            <nav class="header-nav" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
+            <nav class="header-nav primary-navigation" role="navigation"
+                aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
                 <?php wp_nav_menu(array('theme_location' => 'main-menu')) ?>
             </nav>
         </div>
