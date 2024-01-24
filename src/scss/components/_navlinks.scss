@@ -10,6 +10,10 @@ nav {
       color: white;
     }
 
+    ul li.page_item_has_children ul a {
+      color: black;
+    }
+
     ul li {
       list-style: none;
       margin: 0 auto;
