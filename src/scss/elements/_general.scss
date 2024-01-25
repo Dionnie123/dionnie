@@ -14,14 +14,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-img {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 100%;
-  height: auto;
-  -ms-interpolation-mode: bicubic;
-}
-
 :focus {
   outline: 2px solid $primary-colour;
 }

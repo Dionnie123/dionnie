@@ -1,34 +1,16 @@
-@import "./settings/global";
-@import "./settings/colours";
-@import "./settings/break-points";
-@import "./settings/typography";
-
-@import "./tools/units";
-@import "./tools/breakpoint";
-
-@import "./generic/normalize";
-@import "./generic/box-sizing";
-
-@import "./elements/general";
-@import "./elements/typography";
-@import "./elements/print";
 $fa-font-path: "../../node_modules/font-awesome/fonts/";
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
 @import "../../node_modules/slick-carousel/slick/slick.scss";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "./settings/global";
+@import "./settings/colours";
+@import "./generic/normalize";
+@import "./generic/box-sizing";
+@import "./elements/general";
+
 @import "./objects/wp";
-@import "./objects/grid";
-
-@import "./components/page";
-@import "./components/widget";
-@import "./components/footer";
-
-@import "./components/comment";
 
 @import "./components/navlinks";
-
-@import "./components/custom_logo";
-
-@import "./utils/helpers";
-@import "./utils/flex";
-@import "./utils/margins";
+@import "./components/custom_logo_link";
+@import "./components/c-archive-page-header";
