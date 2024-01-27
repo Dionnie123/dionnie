@@ -8,7 +8,7 @@ class Custom_Menu_Walker extends Walker_Nav_Menu
     {
         // Add custom class to the <ul> at this level
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"sub-menu-level-$depth\">\n";
+        $output .= "\n$indent<ul class=\"c-navigation__sub-menu sub-menu-level-$depth\">\n";
     }
 
     function start_el(&$output, $item, $depth = 0, $args = \null, $id = 0)
@@ -92,7 +92,10 @@ class Custom_Menu_Walker extends Walker_Nav_Menu
             <div class="c-navigation">
                 <div class="container">
                     <nav class="header-nav primary-navigation" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
-                        <?php wp_nav_menu(array('theme_location' => 'main-menu', 'walker' => new Custom_Menu_Walker())) ?>
+                        <?php wp_nav_menu(array(
+                            'menu_class'     => 'c-navigation__main-menu',
+                            'theme_location' => 'main-menu', 'walker' => new Custom_Menu_Walker()
+                        )) ?>
                     </nav>
                 </div>
             </div>
