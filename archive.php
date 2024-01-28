@@ -6,7 +6,7 @@ get_header();
     <header>
         <div class="card p-3 d-flex justify-content-center">
             <?php the_archive_title('<h2>', '</h2>') ?>
-            <?php the_archive_description('<p>', '</p>') ?>
+            <?php the_archive_description() ?>
         </div>
     </header>
 </div>

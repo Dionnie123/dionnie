@@ -16,6 +16,7 @@ $query = new WP_Query($args); ?>
 
 <main role="main">
     <div class="container">
+
         <div class="row">
             <div class=" <?php echo is_active_sidebar('primary-sidebar') ?  'col-lg-9' : 'col-lg-12'   ?> ">
                 <?php if ($query->have_posts()) : ?>
