@@ -79,8 +79,8 @@ class Custom_Menu_Walker extends Walker_Nav_Menu
 </head>
 
 <header role="banner" class=" bg-primary text-white">
-    <div class="container-fluid">
-        <div class="d-flex flex-wrap align-items-center justify-content-center ">
+    <div class="container p-3">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-between">
 
             <div>
                 <a href="<?php echo esc_html(home_url('/')) ?>" class="">

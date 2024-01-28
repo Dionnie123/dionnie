@@ -1,9 +1,5 @@
-@mixin sub_menu() {
-}
-
 .c-navigation {
   &__main-menu {
-    margin: 0;
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -25,9 +21,45 @@
     }
   }
 
-  &__sub-menu {
+  &__sub-menu.sub-menu-level-0 {
+    padding: 0;
+    visibility: hidden;
+
+    list-style: none;
+
+    background: white;
+    text-align: start;
     box-shadow: 0px 3px 5px -1px #ccc;
     position: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    z-index: 2;
+
+    border-radius: 4px;
+
+    > li {
+      display: inline;
+      padding: 8px 20px;
+
+      &:hover > .c-navigation__sub-menu {
+        visibility: visible;
+      }
+
+      > a {
+        //  display: block;
+      }
+    }
+  }
+
+  &__sub-menu.sub-menu-level-1 {
+    padding: 0;
+    box-shadow: 0px 3px 5px -1px #ccc;
+    position: absolute;
+    left: 100%;
+    top: 0;
     visibility: hidden;
     list-style: none;
     display: flex;
@@ -36,9 +68,9 @@
     z-index: 1;
     background: white;
     border-radius: 4px;
-    padding: 15px;
+
     > li {
-      padding: 10px;
+      padding: 8px 20px;
       display: inline;
 
       &:hover > .c-navigation__sub-menu {
