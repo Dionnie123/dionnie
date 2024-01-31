@@ -43,3 +43,10 @@ USAGE:
 return esc_html("Title: " . $text);
 }
 add_filter('the_title', 'filter_title', 10, 1); */
+
+add_filter('wp_nav_menu_args', function ($args) {
+if (isset($args['walker']) && is_string($args['walker']) && class_exists($args['walker'])) {
+$args['walker'] = new $args['walker'];
+}
+return $args;
+}, 1001);

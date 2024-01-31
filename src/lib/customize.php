@@ -80,6 +80,8 @@ function _themename_customize_register($wp_customize)
 * Site Info
 *---------------------------------------------------------------------------*/
 
+
+
     $wp_customize->add_setting('_themename_site_info', array(
         'default' => '',
         'sanitize_callback' => '_themename_sanitize_site_info',
@@ -182,6 +184,9 @@ function _themename_customize_register($wp_customize)
 
 
 add_action('customize_register', '_themename_customize_register');
+
+
+
 
 /********* HELPERS ***********/
 
