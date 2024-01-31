@@ -56,6 +56,11 @@ function _themename_customize_register($wp_customize)
 * Start of Footer Options
 *---------------------------------------------------------------------------*/
 
+    $wp_customize->add_setting('nav_menus', array(
+        'selector' => '.header-nav ',
+        'container_inclusive' => false,
+    ));
+
     $wp_customize->selective_refresh->add_partial('_themename_footer_partial', array(
         'settings' => array('_themename_footer_bg', '_themename_footer_layout'),
         'selector' => '#footer',
@@ -86,6 +91,13 @@ function _themename_customize_register($wp_customize)
         'label' => esc_html__('Site Info', '_themename'),
         'section' => '_themename_footer_options'
     ));
+
+    // Add the selective part
+    $wp_customize->selective_refresh->add_partial('_themename_site_info', array(
+        'selector' => '.c-site-info__text', // You can also select a css class
+    ));
+
+
     /*---------------------------------------------------------------------------
 * Footer Background
 *---------------------------------------------------------------------------*/
@@ -122,6 +134,7 @@ function _themename_customize_register($wp_customize)
     /*---------------------------------------------------------------------------
 * End of Footer Options
 *---------------------------------------------------------------------------*/
+
 
 
     $wp_customize->get_setting('blogname')->transport = 'postMessage';
