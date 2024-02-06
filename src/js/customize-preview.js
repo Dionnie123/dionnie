@@ -35,12 +35,9 @@ wp.customize("_themename_accent_colour", (value) => {
 
 wp.customize("_themename_site_info", (value) => {
   value.bind((to) => {
+    console.log(to);
     $(".c-site-info__text").html(strip_tags(to, "<a>"));
   });
 });
 
-wp.customize("_themename_site_info", (value) => {
-  value.bind((to) => {
-    alert(to);
-  });
-});
+console.log("customize-preview.js ✔️");

@@ -63,7 +63,7 @@ export const scripts = () => {
   return src([
     "src/js/bundle.js",
     "src/js/admin.js",
-    "src/assets/js/customize-preview.js",
+    "src/js/customize-preview.js",
   ])
     .pipe(named())
     .pipe(

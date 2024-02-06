@@ -80,8 +80,6 @@ function _themename_customize_register($wp_customize)
 * Site Info
 *---------------------------------------------------------------------------*/
 
-
-
     $wp_customize->add_setting('_themename_site_info', array(
         'default' => '',
         'sanitize_callback' => '_themename_sanitize_site_info',
@@ -94,10 +92,7 @@ function _themename_customize_register($wp_customize)
         'section' => '_themename_footer_options'
     ));
 
-    // Add the selective part
-    $wp_customize->selective_refresh->add_partial('_themename_site_info', array(
-        'selector' => '.c-site-info__text', // You can also select a css class
-    ));
+
 
 
     /*---------------------------------------------------------------------------
@@ -141,10 +136,10 @@ function _themename_customize_register($wp_customize)
 
     $wp_customize->get_setting('blogname')->transport = 'postMessage';
 
-    $wp_customize->selective_refresh->add_partial('blogname', array(
-        // 'settings' => array('blogname')
+    $wp_customize->selective_refresh->add_partial('blogname_partial', array(
+        'settings' => array('blogname'),
         'selector' => '.c-header__blogname',
-        'container_inclusive' => false,
+        'container_inclusive' => true,
         'render_callback' => function () {
             bloginfo('name');
         }

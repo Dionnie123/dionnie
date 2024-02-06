@@ -2,8 +2,7 @@
 
 function _themename_assets()
 {
-    wp_enqueue_style('_themename-bootstrap-stylesheet',  get_template_directory_uri() . '/dist/css/bootstrap.css');
-    wp_enqueue_script('_themename-bootstrap-scripts',  get_template_directory_uri() . '/dist/js/bootstrap.js', array('jquery'), '1.0.0', true);
+
     wp_enqueue_style('_themename-stylesheet',  get_template_directory_uri() . '/dist/css/bundle.css'); //this must be the last css to be added
     wp_enqueue_script('_themename-scripts',  get_template_directory_uri() . '/dist/js/bundle.js', array('jquery'), '1.0.0', true); //this must be the last js to be added
 }
@@ -19,7 +18,7 @@ add_action('admin_enqueue_scripts', '_themename_admin_assets');
 
 function _themename_customize_preview_js()
 {
-    wp_enqueue_script('_themename-cutomize-preview', get_template_directory_uri() . '/dist/assets/js/customize-preview.js', array('customize-preview', 'jquery'), '1.0.0', true);
+    wp_enqueue_script('_themename-cutomize-preview', get_template_directory_uri() . '/dist/js/customize-preview.js', array('customize-preview', 'jquery'), '1.0.0', true);
 
     include(get_template_directory() . '/dist/lib/inline-css.php');
     wp_localize_script('_themename-cutomize-preview', '_themename', array('inline-css' => $inline_styles_selectors));

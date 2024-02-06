@@ -25,3 +25,17 @@ Wordpress Bug:
 
 https://wordpress.stackexchange.com/a/295475
 https://wordpress.stackexchange.com/questions/281854/visible-edit-shortcut-for-wordpress-menu-that-uses-nav-walker
+
+WORDPRESS CONCEPTS
+
+ACCESSIBLE GLOBAL FUNCTIONSL
+Want a Class or Function accessible globally without import? add it functions.php
+
+CUSTOMIZER API:
+Setting Types
+
+1. Refresh - refreshes the whole iframe
+2. postMessage - refreshes element with specified selector e.g id,classname, pros: realtime-edit, refreshes only specific elementor with selector,
+   cons: every update calls ajax, you have to replicated php logic to javascript logic
+3. selective-referesh - refreshes element with specified selector, pros: refreshes only specific elementor with selector, waits for editing to finish before calling ajax request no need to replicated php logic to javascript logic
+   Note: on selective refresh, if no selector specified the whole iframe will be refreshed

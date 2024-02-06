@@ -1,1 +1,1 @@
-console.log(987809)
+console.log("slider.js ✔️");
