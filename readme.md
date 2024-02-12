@@ -28,7 +28,7 @@ https://wordpress.stackexchange.com/questions/281854/visible-edit-shortcut-for-w
 
 WORDPRESS CONCEPTS
 
-ACCESSIBLE GLOBAL FUNCTIONSL
+ACCESSIBLE GLOBAL FUNCTIONS
 Want a Class or Function accessible globally without import? add it functions.php
 
 CUSTOMIZER API:
@@ -39,3 +39,14 @@ Setting Types
    cons: every update calls ajax, you have to replicated php logic to javascript logic
 3. selective-referesh - refreshes element with specified selector, pros: refreshes only specific elementor with selector, waits for editing to finish before calling ajax request no need to replicated php logic to javascript logic
    Note: on selective refresh, if no selector specified the whole iframe will be refreshed
+
+CUSTOM FIELDS
+
+Meta Data consists of:
+Meta Key
+Meta Value
+contained inside:
+Meta Box which can be added via:
+Custom fields
+
+get_post_meta(get_the_ID(), 'Price', true)
