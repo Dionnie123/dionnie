@@ -38,7 +38,7 @@ $query = new WP_Query($args); ?>
                         <?php endwhile; ?>
                     </div>
                     <?php bootstrap_pagination($query, $args) ?>
-                    <?php do_action('_themename_after_pagination') ?>
+
                 <?php else : ?>
                     <div class="container no-posts">
                         <h3><?php _e(apply_filters('_themename_no_posts_text',   esc_html("No Posts Found")), '_themename')  ?>

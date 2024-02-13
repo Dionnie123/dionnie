@@ -18,5 +18,7 @@ $site_info = get_theme_mod('_themename_site_info', '');
             </div>
         </div>
 
+
     </div>
+    <?php do_action('_themename_after_footer_info') ?>
 <?php } ?>

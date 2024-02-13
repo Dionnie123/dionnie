@@ -5,14 +5,18 @@ that allows you to modify their code without you editing the actual files*/
 
 
 // Custom Hooks
-function after_pagination()
+function after_footer_info()
 {
-    echo '<h1>After pagination</h1>';
+?>
+    <div class="bg-dark text-center p-2">
+        <span class="text-light"><small>Made with ❤️ by Mark Dionnie</small></span>
+    </div>
+<?php
 }
-add_action('_themename_after_pagination', 'after_pagination');
+add_action('_themename_after_footer_info', 'after_footer_info');
 /*
 USAGE:
-<?php do_action('_themename_after_pagination') ?>
+<?php do_action('_themename_after_footer_info') ?>
 */
 
 // Wordpress Hooks
@@ -29,7 +33,7 @@ add_action('pre_get_posts', 'paginitization', 10, 1); */
 //Custom Filter
 function no_posts_text($text)
 {
-return esc_html("WALA NA!!!");
+    return esc_html("WALA NA!!!");
 }
 add_filter('_themename_no_posts_text', 'no_posts_text', 10, 1);
 /*
@@ -45,8 +49,8 @@ return esc_html("Title: " . $text);
 add_filter('the_title', 'filter_title', 10, 1); */
 
 add_filter('wp_nav_menu_args', function ($args) {
-if (isset($args['walker']) && is_string($args['walker']) && class_exists($args['walker'])) {
-$args['walker'] = new $args['walker'];
-}
-return $args;
+    if (isset($args['walker']) && is_string($args['walker']) && class_exists($args['walker'])) {
+        $args['walker'] = new $args['walker'];
+    }
+    return $args;
 }, 1001);
