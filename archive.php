@@ -1,7 +1,5 @@
-<?php
+<?php get_header(); ?>
 
-get_header();
-?>
 <div class="c-archive-page-header container  mt-3">
     <header>
         <div class="card p-3 d-flex justify-content-center">
@@ -26,6 +24,8 @@ $args = array(
 $args['category_name'] = get_query_var('category_name') ?? null;
 $query = new WP_Query($args); ?>
 <?php get_template_part('template-parts/post/filter'); ?>
+
+
 
 <main role="main">
     <div class="container">
@@ -57,10 +57,7 @@ $query = new WP_Query($args); ?>
         </div>
     </div>
 </main>
+
 <?php wp_reset_postdata(); ?>
 
-<?php
-
-
-
-get_footer();
+<?php get_footer(); ?>
