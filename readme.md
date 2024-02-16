@@ -50,3 +50,5 @@ Meta Box which can be added via:
 Custom fields
 
 get_post_meta(get_the_ID(), 'Price', true)
+
+https://stackoverflow.com/questions/64390664/how-to-implement-switchable-themes-in-scss

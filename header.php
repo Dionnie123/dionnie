@@ -1,3 +1,7 @@
+<?php
+require_once(get_template_directory() . '/dist/lib/custom_menu_walker.php');
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -21,11 +25,10 @@
 
             <div class="c-navigation">
                 <div class="container">
-                    <nav class="header-nav primary-navigation" role="navigation"
-                        aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
+                    <nav class="header-nav primary-navigation" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
                         <?php
 
-              
+
 
                         wp_nav_menu(array(
                             'menu_class'     => 'c-navigation__main-menu',

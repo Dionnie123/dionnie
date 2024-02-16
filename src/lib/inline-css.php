@@ -22,5 +22,12 @@ foreach ($inline_styles_selectors as $selector => $props) {
     foreach ($props as $prop => $value) {
         $inline_styles .= "{$prop}: " . sanitize_hex_color(get_theme_mod($value, '#20ddae')) . ";";
     }
+
     $inline_styles .= "} ";
 }
+
+$inline_styles .= "root:{";
+$inline_styles .= "--bs-link-color: red;";
+$inline_styles .= "} ";
+
+$inline_styles .= "fuck";
