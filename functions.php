@@ -8,5 +8,8 @@ require_once(get_template_directory() . '/4-hooks-and-filters.php');
 require_once(get_template_directory() . '/dist/lib/navigation.php');
 
 
+require_once(get_template_directory() . '/dist/lib/services/post_service.php');
 
-add_action('init', '_themename_handle_delete_post');
+
+
+(new \_ThemeName\PostService)->registerActions();

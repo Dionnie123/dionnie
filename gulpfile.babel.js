@@ -34,6 +34,12 @@ var paths = {
   },
 };
 
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
 export const styles = () => {
   return src([paths.styles.src, "src/scss/admin.scss"])
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
@@ -122,6 +128,7 @@ export const compress = () => {
     "!package-lock.json",
   ])
     .pipe(replace("_themename", info.name))
+    .pipe(replace("_ThemeName", toTitleCase(info.name)))
     .pipe(zip(`${info.name}.zip`))
     .pipe(dest("bundled"));
 };
