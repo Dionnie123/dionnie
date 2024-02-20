@@ -11,5 +11,4 @@ require_once(get_template_directory() . '/dist/lib/navigation.php');
 require_once(get_template_directory() . '/dist/lib/services/post_service.php');
 
 
-
 (new \_ThemeName\PostService)->registerActions();
