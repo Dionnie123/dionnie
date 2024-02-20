@@ -2,6 +2,8 @@
 
 namespace _ThemeName;
 
+use WP_Query;
+
 class PostService
 {
 
@@ -11,31 +13,34 @@ class PostService
     {
     }
 
+    public function args()
+    {
+        return array(
+            'post_type' => 'post',
+            'posts_per_page' => 12,
+            'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1,
+            'ignore_sticky_posts' => 1,
+            'orderby' => $_GET['orderby'] ?? 'date',
+            'order' =>  $_GET['order'] ?? 'DESC',
+            's' => $_GET['title_search'] ?? '',
+            'category_name' => get_query_var('category_name') ?? null,
+        );
+    }
 
+    public function getAll()
+    {
+        $query = new WP_Query($this->args());
+        return $query;
+    }
 
     public function registerActions()
     {
         add_action('init', array($this, $this->delete));
     }
 
-    function allTrue(array $boolArray)
-    {
-        // Check if all elements in the array are true
-        return array_reduce($boolArray, function ($carry, $item) {
-            return $carry && $item;
-        }, true);
-    }
-
-
-
-    public function checkDeleteNonce()
-    {
-        return !isset($_GET['nonce']) || !wp_verify_nonce($_GET['nonce'], $this->delete . '_' . $_GET['post']);
-    }
-
     public function _themename_delete_post()
     {
-        if ($this->allTrue([
+        if (allTrue([
             isset($_GET['nonce']),
             isset($_GET['action']),
             isset($_GET['post']),
@@ -60,11 +65,11 @@ class PostService
         if (current_user_can('delete_post', get_the_ID())) {
             ob_start(); ?>
 
-<a href="<?php echo esc_url($url) ?>" class="btn btn-danger btn-sm">
-    <span class="btn-label">
-        <i class="fa fa-trash"></i>
-    </span>&nbsp;<?php echo esc_html__("Delete Post", "_themename") ?>
-</a>
+            <a href="<?php echo esc_url($url) ?>" class="btn btn-danger btn-sm">
+                <span class="btn-label">
+                    <i class="fa fa-trash"></i>
+                </span>&nbsp;<?php echo esc_html__("Delete Post", "_themename") ?>
+            </a>
 
 <?php
             $html = ob_get_clean();

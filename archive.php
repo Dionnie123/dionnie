@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+$postService = new \_ThemeName\PostService;
+$query = $postService->getAll();
+
+get_header(); ?>
 
 <div class="c-archive-page-header container  mt-3">
     <header>
@@ -8,21 +12,6 @@
         </div>
     </header>
 </div>
-
-<?php
-
-
-$args = array(
-    'post_type' => 'post',
-    'posts_per_page' => 12,
-    'paged' => $paged,
-    'ignore_sticky_posts' => 1,
-    'orderby' => $_GET['orderby'] ?? 'date',
-    'order' =>  $_GET['order'] ?? 'DESC',
-    's' => $_GET['s'] ?? ''
-);
-$args['category_name'] = get_query_var('category_name') ?? null;
-$query = new WP_Query($args); ?>
 <?php get_template_part('template-parts/post/filter'); ?>
 
 
@@ -37,7 +26,7 @@ $query = new WP_Query($args); ?>
                             <?php get_template_part('template-parts/post/content', 'archive'); ?>
                         <?php endwhile; ?>
                     </div>
-                    <?php bootstrap_pagination($query, $args) ?>
+                    <?php bootstrap_pagination($query, $postService->args()) ?>
 
                 <?php else : ?>
                     <div class="container no-posts">

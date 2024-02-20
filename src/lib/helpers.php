@@ -47,7 +47,7 @@ function bootstrap_pagination($query = null, $args = [])
         'ignore_sticky_posts' => 1,
         'total' => $query->max_num_pages,
     ];
-    $args = array_replace($default, $args);
+    $args = array_replace($default,  is_array($args) ? $args : []);
     $listString = paginate_links($args);
 
     // Replace classes and modify pagination structure
@@ -64,6 +64,12 @@ function bootstrap_pagination($query = null, $args = [])
 }
 
 
+function allTrue(array $boolArray)
+{
+    return array_reduce($boolArray, function ($carry, $item) {
+        return $carry && $item;
+    }, true);
+}
 
 
 
