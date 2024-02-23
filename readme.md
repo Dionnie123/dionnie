@@ -1,3 +1,7 @@
+Resources:
+https://devsnap.me/css-menu
+https://generatewp.com/login/ mbulingit:Bcmnvxz,./123
+
 NOTES:
 
 Node.js has two module systems:

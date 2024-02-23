@@ -16,14 +16,14 @@ class PostService
     public function args()
     {
         return array(
-            'post_type' => 'post',
-            'posts_per_page' => 12,
-            'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1,
-            'ignore_sticky_posts' => 1,
-            'orderby' => $_GET['orderby'] ?? 'date',
-            'order' =>  $_GET['order'] ?? 'DESC',
-            's' => $_GET['title_search'] ?? '',
-            'category_name' => get_query_var('category_name') ?? null,
+            'post_type'          => 'post',
+            'posts_per_page'     => 12,
+            'paged'              => (get_query_var('paged')) ? get_query_var('paged') : 1,
+            'ignore_sticky_posts' => 0,
+            'orderby'            => $_GET['orderby'] ?? 'date',
+            'order'              => $_GET['order'] ?? 'DESC',
+            's'                  => $_GET['title_search'] ?? '',
+            'category_name'      => get_query_var('category_name') ?? null,
         );
     }
 
