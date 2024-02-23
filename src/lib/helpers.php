@@ -63,6 +63,27 @@ function bootstrap_pagination($query = null, $args = [])
     echo $listString ?? null;
 }
 
+/*
+USAGE:
+$likes = 5;
+echo countable_text('1 like', '%s likes', $likes);
+*/
+function countable_text($singular, $plural, $count)
+{
+    return sprintf(
+        /* translators: %s is comments */
+        esc_html(
+            _n(
+                $singular,
+                $plural,
+                $count,
+                '_themename'
+            )
+        ),
+        $count
+    );
+}
+
 
 function allTrue(array $boolArray)
 {

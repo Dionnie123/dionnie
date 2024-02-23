@@ -27,6 +27,16 @@ class PostService
         );
     }
 
+    public function deleteUrl()
+    {
+        $url = add_query_arg([
+            'action' => $this->delete,
+            'post' => get_the_ID(),
+            'nonce' => wp_create_nonce($this->delete . '_' . get_the_ID())
+        ], home_url());
+        return  esc_url($url);
+    }
+
     public function getAll()
     {
         $query = new WP_Query($this->args());
@@ -52,28 +62,6 @@ class PostService
             wp_trash_post($post_id);
             wp_safe_redirect(home_url());
             die;
-        }
-    }
-
-    public function themename_delete_post_btn()
-    {
-        $url = add_query_arg([
-            'action' => $this->delete,
-            'post' => get_the_ID(),
-            'nonce' => wp_create_nonce($this->delete . '_' . get_the_ID())
-        ], home_url());
-        if (current_user_can('delete_post', get_the_ID())) {
-            ob_start(); ?>
-
-            <a href="<?php echo esc_url($url) ?>" class="btn btn-danger btn-sm">
-                <span class="btn-label">
-                    <i class="fa fa-trash"></i>
-                </span>&nbsp;<?php echo esc_html__("Delete Post", "_themename") ?>
-            </a>
-
-<?php
-            $html = ob_get_clean();
-            return $html;
         }
     }
 }
