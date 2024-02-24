@@ -15,17 +15,31 @@ class PostService
 
     public function args()
     {
+
+        $orderby = isset($_GET['orderby']) ? sanitize_text_field($_GET['orderby']) : 'date';
         return array(
             'post_type'          => 'post',
             'posts_per_page'     => 12,
-            'paged'              => (get_query_var('paged')) ? get_query_var('paged') : 1,
             'ignore_sticky_posts' => 0,
-            'orderby'            => $_GET['orderby'] ?? 'date',
-            'order'              => $_GET['order'] ?? 'DESC',
-            's'                  => $_GET['title_search'] ?? '',
+            'post_status' => 'any',
+            'orderby'            => array(
+                'sticky'      => 'desc',            // Sort sticky posts first
+                'title'      => ($orderby === 'title') ? 'asc' : 'desc',
+                'post_date'   => ($orderby === 'date') ? 'asc' : 'desc'
+            ),
+            'paged'              => (get_query_var('paged')) ? get_query_var('paged') : 1,
             'category_name'      => get_query_var('category_name') ?? null,
+            'order'              => $_GET['order'] ?? 'DESC',
+            's'                  => $_GET['title_search'] ?? null,
+
         );
     }
+
+    public function registerActions()
+    {
+        add_action('init', array($this, $this->delete));
+    }
+
 
     public function deleteUrl()
     {
@@ -43,10 +57,6 @@ class PostService
         return $query;
     }
 
-    public function registerActions()
-    {
-        add_action('init', array($this, $this->delete));
-    }
 
     public function _themename_delete_post()
     {

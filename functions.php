@@ -11,4 +11,7 @@ require_once(get_template_directory() . '/dist/lib/navigation.php');
 require_once(get_template_directory() . '/dist/lib/services/post_service.php');
 
 
+require_once(get_template_directory() . '/dist/lib/custom_post_types/books.php');
+
+(new \_ThemeName\Book);
 (new \_ThemeName\PostService)->registerActions();
