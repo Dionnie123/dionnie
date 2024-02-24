@@ -28,9 +28,9 @@ class PostService
                 'post_date'   => ($orderby === 'date') ? 'asc' : 'desc'
             ),
             'paged'              => (get_query_var('paged')) ? get_query_var('paged') : 1,
-            'category_name'      => get_query_var('category_name') ?? null,
+            'category_name'      => get_query_var('category_name') ?? '',
             'order'              => $_GET['order'] ?? 'DESC',
-            's'                  => $_GET['title_search'] ?? null,
+            's'                  => $_GET['title_search'] ?? '',
 
         );
     }
@@ -60,18 +60,16 @@ class PostService
 
     public function _themename_delete_post()
     {
-        if (allTrue([
-            isset($_GET['nonce']),
-            isset($_GET['action']),
-            isset($_GET['post']),
-            wp_verify_nonce($_GET['nonce'], $this->delete . '_' . $_GET['post']),
-            $_GET['action'] === $this->delete,
-            !empty(get_post((int) $_GET['post']))
-        ])) {
-            $post_id = $_GET['post'];
-            wp_trash_post($post_id);
-            wp_safe_redirect(home_url());
-            die;
+
+        if (isset($_GET['post']) && !empty(get_post((int) $_GET['post']))) {
+            if ($_GET['action'] &&  $_GET['action'] === $this->delete) {
+                if (isset($_GET['nonce']) && wp_verify_nonce($_GET['nonce'], $this->delete . '_' . $_GET['post'])) {
+                    $post_id = $_GET['post'];
+                    wp_trash_post($post_id);
+                    wp_safe_redirect(home_url());
+                    die;
+                }
+            }
         }
     }
 }

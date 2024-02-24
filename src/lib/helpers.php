@@ -85,12 +85,6 @@ function countable_text($singular, $plural, $count)
 }
 
 
-function allTrue(array $boolArray)
-{
-    return array_reduce($boolArray, function ($carry, $item) {
-        return $carry && $item;
-    }, true);
-}
 
 
 

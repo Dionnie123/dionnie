@@ -15,6 +15,7 @@
 
             <a href="<?php esc_url(the_permalink());  ?>" class="btn btn-primary btn-sm">
                 <span class="btn-label"><i class="fa fa-check"></i></span>&nbsp;Read more </a>
+
         </div>
     </div>
 </article>
