@@ -37,9 +37,9 @@ class Book
 class BookDetailMetaBox
 {
 
-    protected  $author = "__themename_book_author";
-    protected  $published_date = "__themename_book_published_date";
-    protected  $layout = "__themename_book_layout";
+    protected  $author = "_themename_book_author";
+    protected  $published_date = "_themename_book_published_date";
+    protected  $layout = "_themename_book_layout";
     protected  $nonce_action = "_themename_book_detail_metabox_update";
     protected  $nonce_field = "_themename_book_detail_metabox_nonce";
 
@@ -54,14 +54,14 @@ class BookDetailMetaBox
         add_meta_box(
             '_themename_book_detail_metabox', // Unique ID
             'Book Details',           // Box title
-            array($this, '_render_meta_box_book_details'), // Callback function to render the content
+            array($this, '_themename_book_detail_metabox_html'), // Callback function to render the content
             'book', // Post type
             'normal', // Context (normal, advanced, side)
             'high' // Priority (high, core, default, low)
         );
     }
 
-    function _render_meta_box_book_details($post)
+    function _themename_book_detail_metabox_html($post)
     {
         /* echo "<pre>";
         var_dump(get_post_type_object($post->post_type));
@@ -77,8 +77,6 @@ class BookDetailMetaBox
 ?>
         <label for="<?php echo $this->author; ?>">Author:</label>
         <input class="widefat" type="text" id="<?php echo $this->author; ?>" name="<?php echo $this->author; ?>" value="<?php echo esc_attr($author); ?>" />
-
-        <br />
 
         <label for="<?php echo $this->published_date; ?>">Published Date:</label>
         <input class="widefat" type="text" id="<?php echo $this->published_date; ?>" name="<?php echo $this->published_date; ?>" value="<?php echo esc_attr($published_date); ?>" />
@@ -103,8 +101,6 @@ class BookDetailMetaBox
             return;
         }
 
-
-
         $edit_cap = get_post_type_object($post->post_type)->cap->edit_post;
         if (!current_user_can($edit_cap, $post_id)) {
             return;
@@ -115,8 +111,11 @@ class BookDetailMetaBox
         $published_date = isset($_POST[$this->published_date]) ? sanitize_text_field($_POST[$this->published_date]) : '';
         $layout = isset($_POST[$this->layout]) ? sanitize_text_field($_POST[$this->layout]) : '';
 
-        update_post_meta($post_id, $this->author, $author);
-        update_post_meta($post_id, $this->published_date, $published_date);
-        update_post_meta($post_id, $this->layout, $layout);
+
+        // Reason why we put '_' on this case is metakeys need to have underscore as prefix
+
+        update_post_meta($post_id, '_' . $this->author, $author);
+        update_post_meta($post_id, '_' . $this->published_date, $published_date);
+        update_post_meta($post_id, '_' . $this->layout, $layout);
     }
 }
