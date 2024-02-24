@@ -8,9 +8,6 @@ $custom_arguments = array(
     'post_type'      => 'post', // Change to your custom post type if needed
     'posts_per_page' => 12,
     'order'          => 'DESC',
-
-
-
 );
 
 // Create a new WP_Query instance with your custom arguments
