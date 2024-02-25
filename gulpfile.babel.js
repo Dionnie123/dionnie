@@ -34,15 +34,7 @@ var paths = {
   },
 };
 
-function toClassName(str) {
-  // Convert to title case
-  str = str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
 
-  // Remove special characters and spaces
-  return str.replace(/[^a-zA-Z0-9]/g, "");
-}
 
 export const styles = () => {
   return src([paths.styles.src, "src/scss/admin.scss"])
