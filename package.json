@@ -1,5 +1,7 @@
 {
-  "name": "dionnie",
+  "name": "dionnie_pro",
+  "slug": "dionnie-pro",
+  "namespace": "DionniePro",
   "version": "1.0.0",
   "description": "My very first wordpress theme.",
   "main": "gulpfile.js",

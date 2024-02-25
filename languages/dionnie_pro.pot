@@ -1,12 +1,12 @@
-# Copyright (C) 2024 dionnie
-# This file is distributed under the same license as the dionnie package.
+# Copyright (C) 2024 dionnie-pro
+# This file is distributed under the same license as the dionnie-pro package.
 msgid ""
 msgstr ""
-"Project-Id-Version: dionnie\n"
+"Project-Id-Version: dionnie-pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-24 10:05+0000\n"
+"POT-Creation-Date: 2024-02-25 06:47+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -109,15 +109,7 @@ msgstr ""
 msgid "Footer layout is invalid"
 msgstr ""
 
-#: dist/lib/custom_post_types/books.php:19, dist/lib/custom_post_types/books.php:20, src/lib/custom_post_types/books.php:19, src/lib/custom_post_types/books.php:20
-msgid "Books"
-msgstr ""
-
-#: dist/lib/custom_post_types/books.php:21, src/lib/custom_post_types/books.php:21
-msgid "Book"
-msgstr ""
-
-#: dist/lib/helpers.php:103, src/lib/helpers.php:103
+#: dist/lib/helpers.php:97, src/lib/helpers.php:97
 msgid "Read More <span class=\"u-screen-reader-text\">About %s</span>"
 msgstr ""
 

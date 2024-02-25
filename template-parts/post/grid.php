@@ -10,6 +10,8 @@ $custom_arguments = array(
     'order'          => 'DESC',
 );
 
+$custom_arguments["s"] = $_GET['s'] ?? null;
+
 // Create a new WP_Query instance with your custom arguments
 $query = new WP_Query($custom_arguments);
 

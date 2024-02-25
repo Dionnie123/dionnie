@@ -2,7 +2,7 @@
 
 $categories = get_categories();
 
-$title = isset($_GET['title_search']) ?? '';
+$title = isset($_GET['s']) ?? '';
 $category = isset($_GET['category_name']) ?? '';
 
 ?>
@@ -15,7 +15,7 @@ $category = isset($_GET['category_name']) ?? '';
             <div class="col d-flex d-grid gap-2">
 
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search by Title" name="title_search" aria-label="Search by Title" aria-describedby="basic-addon2" value="<?php esc_attr($title); ?>">
+                    <input type="text" class="form-control" placeholder="Search by Title" name="s" aria-label="Search by Title" aria-describedby="basic-addon2" value="<?php esc_attr($title); ?>">
                     <button class="btn btn-secondary clear" type="button" id="button-addon2" onclick="clear()">X</button>
                 </div>
 
@@ -66,7 +66,7 @@ $category = isset($_GET['category_name']) ?? '';
         (function($) {
             "use strict";
             $(function() {
-                var title = 'title_search=' + $("input[name=title_search]").val();
+                var title = 's=' + $("input[name=s]").val();
                 var category = '&category_name=' + $('select[name=category_name]').find("option:selected")
                     .val();
                 var order = $('select[name=order_filter]').find("option:selected").val();

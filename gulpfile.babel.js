@@ -34,10 +34,14 @@ var paths = {
   },
 };
 
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, function (txt) {
+function toClassName(str) {
+  // Convert to title case
+  str = str.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
+
+  // Remove special characters and spaces
+  return str.replace(/[^a-zA-Z0-9]/g, "");
 }
 
 export const styles = () => {
@@ -112,7 +116,7 @@ export const watchForChanges = () => {
 };
 
 export const clean = () => {
-  return del(["dist"]);
+  return del(["dist", "bundled", "languages"]);
 };
 
 export const compress = () => {
@@ -127,8 +131,10 @@ export const compress = () => {
     "!package.json",
     "!package-lock.json",
   ])
-    .pipe(replace("_themename", info.name))
-    .pipe(replace("_ThemeName", toTitleCase(info.name)))
+    .pipe(replace("_themename_", info.name + "_"))
+    .pipe(replace("_themename-", info.slug + "-"))
+    .pipe(replace("_themename", info.slug))
+    .pipe(replace("_ThemeName", info.namespace))
     .pipe(zip(`${info.name}.zip`))
     .pipe(dest("bundled"));
 };
@@ -138,7 +144,7 @@ export const pot = () => {
     .pipe(
       wpPot({
         domain: "_themename",
-        package: info.name,
+        package: info.slug,
       })
     )
     .pipe(dest(`languages/${info.name}.pot`));
