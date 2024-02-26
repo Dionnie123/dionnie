@@ -2,18 +2,9 @@
 
 
 $postService = new \_ThemeName\PostService;
-//$query = $postService->getAll();
+$query = $postService->getAll();
 
-$custom_arguments = array(
-    'post_type'      => 'post', // Change to your custom post type if needed
-    'posts_per_page' => 12,
-    'order'          => 'DESC',
-);
 
-$custom_arguments["s"] = $_GET['s'] ?? null;
-
-// Create a new WP_Query instance with your custom arguments
-$query = new WP_Query($custom_arguments);
 
 
 
@@ -45,4 +36,5 @@ get_template_part('template-parts/post/filter'); ?>
         </div>
     </div>
 </main>
+
 <?php wp_reset_postdata(); ?>

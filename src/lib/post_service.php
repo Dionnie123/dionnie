@@ -23,14 +23,14 @@ class PostService
             'ignore_sticky_posts' => 0,
             'post_status' => 'any',
             'orderby'            => array(
-                'sticky'      => 'desc',            // Sort sticky posts first
+                'sticky' => 'asc',
                 'title'      => ($orderby === 'title') ? 'asc' : 'desc',
                 'post_date'   => ($orderby === 'date') ? 'asc' : 'desc'
             ),
             'paged'              => (get_query_var('paged')) ? get_query_var('paged') : 1,
-            'category_name'      => get_query_var('category_name') ?? '',
+            'category_name'      => get_query_var('category_name') ?? null,
             'order'              => $_GET['order'] ?? 'DESC',
-            's'                  => $_GET['title_search'] ?? '',
+            's'                  => $_GET['s'] ?? null,
 
         );
     }
