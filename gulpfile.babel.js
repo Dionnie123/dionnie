@@ -34,8 +34,6 @@ var paths = {
   },
 };
 
-
-
 export const styles = () => {
   return src([paths.styles.src, "src/scss/admin.scss"])
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
@@ -123,10 +121,22 @@ export const compress = () => {
     "!package.json",
     "!package-lock.json",
   ])
+    .pipe(replace("_themetitle", info.title))
+    .pipe(replace("_themedescription", info.description))
+    .pipe(replace("_themeauthor", info.author))
     .pipe(replace("_themename_", info.name + "_"))
     .pipe(replace("_themename-", info.slug + "-"))
     .pipe(replace("_themename", info.slug))
     .pipe(replace("_ThemeName", info.namespace))
+    .pipe(
+      rename(function (path) {
+        console.log(path);
+        if (path.basename.includes("_themename")) {
+          path.basename = `${info.slug}`;
+        }
+      })
+    )
+
     .pipe(zip(`${info.name}.zip`))
     .pipe(dest("bundled"));
 };

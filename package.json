@@ -1,6 +1,7 @@
 {
   "name": "dionnie_pro",
   "slug": "dionnie-pro",
+  "title": "Dionnie Pro",
   "namespace": "DionniePro",
   "version": "1.0.0",
   "description": "My very first wordpress theme.",
