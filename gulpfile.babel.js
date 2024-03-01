@@ -33,6 +33,10 @@ var paths = {
     src: "src/js/**/*.js",
     dest: "src/js",
   },
+  plugins: {
+    src: ["../../plugins/dionnie-wp-dev/bundled/*"],
+    dest: ["plugins"],
+  },
 };
 
 export const styles = () => {
@@ -58,6 +62,10 @@ export const copy = () => {
     "!src/{images,js,scss}",
     "!src/{images,js,scss}/**/*",
   ]).pipe(dest("dist"));
+};
+
+export const copyPlugins = () => {
+  return src(paths.plugins.src).pipe(dest(paths.plugins.dest));
 };
 
 export const scripts = () => {
@@ -173,6 +181,7 @@ export const dev = series(
 export const build = series(
   clean,
   parallel(styles, images, copy, scripts),
+  copyPlugins,
   pot,
   compress
 );
