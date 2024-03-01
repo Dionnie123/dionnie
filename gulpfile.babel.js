@@ -35,7 +35,7 @@ var paths = {
   },
   plugins: {
     src: ["../../plugins/dionnie-wp-dev/bundled/*"],
-    dest: ["plugins"],
+    dest: ["/dist/lib/plugins"],
   },
 };
 

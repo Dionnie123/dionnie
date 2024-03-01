@@ -10,7 +10,7 @@ function _themename_register_required_plugins()
         array(
             'name' => 'Dionnie WP',
             'slug' => 'dionnie-wp',
-            'source' => get_template_directory_uri() . '/plugins/dionnie-wp.zip',
+            'source' => 'plugins/dionnie-wp.zip',
             'required' => true,
             'version' => '1.0.0',
             'force_activation' => false,
