@@ -13,6 +13,7 @@ import browserSync from "browser-sync";
 import zip from "gulp-zip";
 import info from "./package.json";
 import replace from "gulp-replace";
+import rename from "gulp-rename";
 import wpPot from "gulp-wp-pot";
 
 const PRODUCTION = yargs.argv.prod;
@@ -136,8 +137,7 @@ export const compress = () => {
         }
       })
     )
-
-    .pipe(zip(`${info.name}.zip`))
+    .pipe(zip(`${info.slug}.zip`))
     .pipe(dest("bundled"));
 };
 
