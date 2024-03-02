@@ -220,8 +220,11 @@ export const build = series(
   pot
 );
 
-export const bundle = () => {
-  return series(build, replace_filenames, compress, delete_replaced_filenames);
-};
+export const bundle = series(
+  build,
+  //replace_filenames,
+  compress
+  //  delete_replaced_filenames
+);
 
 export default dev;

@@ -31,7 +31,7 @@
                     <tr>
 
                         <th>Price</th>
-                        <td><?php echo (new \_PluginName\Post)->get_layout()  ?></td>
+                        <td><?php echo (new \_ThemeName\Post)->get_layout()  ?></td>
 
                     </tr>
                     <tr>
