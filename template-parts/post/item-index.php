@@ -21,6 +21,9 @@
             <?php get_template_part('template-parts/post/button-delete',) ?>
 
             <?php echo do_shortcode('[current_year]'); ?>
+            <i class="bi bi-0-circle"></i>
+            <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+            <i class="bi bi-plus-square-fill" style="font-size: 2rem; color: cornflowerblue;"></i>
             <table class="table table-sm  table-striped table-hover table-bordered rounded-1 overflow-hidden fs-6" style="font-size: 14px !important;">
 
                 <tbody>
