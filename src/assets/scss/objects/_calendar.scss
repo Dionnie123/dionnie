@@ -1,9 +1,10 @@
 /* calendar widget */
-.widget_calendar {
-  float: left;
-}
+
 #wp-calendar {
   width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
 }
 #wp-calendar caption {
   text-align: right;
@@ -25,8 +26,16 @@
   background: #f5f5f5;
   border: 1px solid #fff;
   text-align: center;
-  padding: 8px;
 }
+
+#wp-calendar th,
+#wp-calendar td {
+  border: 1px solid #ddd;
+
+  text-align: center;
+  padding: 6px;
+}
+
 #wp-calendar tbody td:hover {
   background: #fff;
 }

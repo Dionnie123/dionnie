@@ -1,0 +1,7 @@
+.widget_recent_entries li {
+  list-style-type: none;
+}
+
+.widget_recent_entries li:not(:last-child) {
+  margin-bottom: 10px;
+}
