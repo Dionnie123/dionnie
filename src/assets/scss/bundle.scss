@@ -1,9 +1,6 @@
 $fa-font-path: "../../../node_modules/font-awesome/fonts";
 @import "../../../node_modules/font-awesome/scss/font-awesome.scss";
 
-//$bootstrap-icons-font-dir: "../../../node_modules/bootstrap-icons/font/fonts";
-@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
-
 @import "../../../node_modules/slick-carousel/slick/slick.scss";
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
@@ -14,6 +11,7 @@ $fa-font-path: "../../../node_modules/font-awesome/fonts";
 @import "./elements/general";
 
 @import "./objects/wp";
+@import "./objects/calendar";
 
 @import "./components/c-navigation";
 @import "./components/custom-logo-link";
