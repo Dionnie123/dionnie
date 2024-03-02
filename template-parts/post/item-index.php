@@ -24,13 +24,14 @@
             <i class="bi bi-0-circle"></i>
             <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
             <i class="bi bi-plus-square-fill" style="font-size: 2rem; color: cornflowerblue;"></i>
-            <table class="table table-sm  table-striped table-hover table-bordered rounded-1 overflow-hidden fs-6" style="font-size: 14px !important;">
+            <table class="table table-sm  table-striped table-hover table-bordered rounded-1 overflow-hidden fs-6"
+                style="font-size: 14px !important;">
 
                 <tbody>
                     <tr>
 
                         <th>Price</th>
-                        <td><?php echo sanitize_text_field(get_post_meta(get_the_ID(), 'Price', true))  ?></td>
+                        <td><?php echo (new \_PluginName\Post)->get_layout()  ?></td>
 
                     </tr>
                     <tr>

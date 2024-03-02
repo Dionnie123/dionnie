@@ -4,10 +4,6 @@
 $postService = new \_ThemeName\PostService;
 $query = $postService->getAll();
 
-
-
-
-
 get_template_part('template-parts/post/filter'); ?>
 <main role="main">
     <div class="container">

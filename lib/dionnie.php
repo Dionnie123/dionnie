@@ -4,7 +4,7 @@ namespace _ThemeName;
 
 use WP_Query;
 
-class PostService
+class Dionnie
 {
 
     protected  $delete = '_themename_delete_post';
@@ -74,4 +74,4 @@ class PostService
     }
 }
 
-(new \_ThemeName\PostService)->registerActions();
+(new \_ThemeName\Dionnie)->registerActions();

@@ -5,16 +5,16 @@ namespace _PluginName;
 class Post
 {
 
-    protected $postDetailMetaBox;
+    protected $detail;
 
-    public function __construct()
+    public function init()
     {
-
-        $this->postDetailMetaBox = new PostDetailMetaBox();
+        $this->detail = (new PostDetailMetaBox());
     }
 
-    public function register()
+    public function get_layout()
     {
+        return sanitize_text_field(get_post_meta(get_the_ID(), '_themename_post_layout', true));
     }
 }
 
@@ -28,6 +28,8 @@ class PostDetailMetaBox
     protected  $layout = "_themename_post_layout";
     protected  $nonce_action = "_themename_post_detail_metabox_update";
     protected  $nonce_field = "_themename_post_detail_metabox_nonce";
+
+
 
     public function __construct()
     {
@@ -69,20 +71,17 @@ class PostDetailMetaBox
 
         wp_nonce_field($this->nonce_action, $this->nonce_field);
 ?>
-<label for="<?php echo $this->author; ?>">Author:</label>
-<input class="widefat" type="text" id="<?php echo $this->author; ?>" name="<?php echo $this->author; ?>"
-    value="<?php echo esc_attr($author); ?>" />
+        <label for="<?php echo $this->author; ?>">Author:</label>
+        <input class="widefat" type="text" id="<?php echo $this->author; ?>" name="<?php echo $this->author; ?>" value="<?php echo esc_attr($author); ?>" />
 
-<label for="<?php echo $this->published_date; ?>">Published Date:</label>
-<input class="widefat" type="text" id="<?php echo $this->published_date; ?>" name="<?php echo $this->published_date; ?>"
-    value="<?php echo esc_attr($published_date); ?>" />
+        <label for="<?php echo $this->published_date; ?>">Published Date:</label>
+        <input class="widefat" type="text" id="<?php echo $this->published_date; ?>" name="<?php echo $this->published_date; ?>" value="<?php echo esc_attr($published_date); ?>" />
 
-<label for="<?php echo $this->layout; ?>">Layout:</label>
-<select class="widefat" name="<?php echo $this->layout; ?>" id="<?php echo $this->layout; ?>"
-    value="<?php echo esc_attr($layout); ?>">
-    <option <?php selected($layout, "full") ?> value="full">Full Width</option>
-    <option <?php selected($layout, "sidebar") ?> value="sidebar">Post with Sidebar</option>
-</select>
+        <label for="<?php echo $this->layout; ?>">Layout:</label>
+        <select class="widefat" name="<?php echo $this->layout; ?>" id="<?php echo $this->layout; ?>" value="<?php echo esc_attr($layout); ?>">
+            <option <?php selected($layout, "full") ?> value="full">Full Width</option>
+            <option <?php selected($layout, "sidebar") ?> value="sidebar">Post with Sidebar</option>
+        </select>
 
 <?php
     }
@@ -114,4 +113,4 @@ class PostDetailMetaBox
     }
 }
 
-(new \_PluginName\Post);
+(new \_PluginName\Post)->init();
