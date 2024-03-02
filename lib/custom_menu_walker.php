@@ -1,5 +1,5 @@
 <?php
-class Custom_Menu_Walker extends Walker_Nav_Menu
+class CustomMenuWalker extends Walker_Nav_Menu
 {
 
     function start_lvl(&$output, $depth = 0, $args = null)
@@ -38,11 +38,19 @@ class Custom_Menu_Walker extends Walker_Nav_Menu
             }
         }
 
-        $item_output = $args->before;
-        $item_output .= '<a' . $attributes . '>';
-        $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-        $item_output .= '</a>';
-        $item_output .= $args->after;
+        // Check if $args is an object
+        if (is_object($args)) {
+            $item_output = $args->before;
+            $item_output .= '<a' . $attributes . '>';
+            $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+            $item_output .= '</a>';
+            $item_output .= $args->after;
+        } else {
+            // $args is an array, handle accordingly (adjust this based on your actual requirements)
+            $item_output = '<a' . $attributes . '>';
+            $item_output .= apply_filters('the_title', $item->title, $item->ID);
+            $item_output .= '</a>';
+        }
 
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
 
@@ -63,3 +71,12 @@ class Custom_Menu_Walker extends Walker_Nav_Menu
         $output .= "</li>\n";
     }
 }
+
+
+//Menu Custom Walker fix
+add_filter('wp_nav_menu_args', function ($args) {
+    if (isset($args['walker']) && is_string($args['walker']) && class_exists($args['walker'])) {
+        $args['walker'] = new $args['walker'];
+    }
+    return $args;
+}, 1001);

@@ -1,5 +1,5 @@
 <?php
-require_once(get_template_directory() . '/dist/lib/custom_menu_walker.php');
+require_once(get_template_directory() . '/lib/custom_menu_walker.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,14 +27,8 @@ require_once(get_template_directory() . '/dist/lib/custom_menu_walker.php');
                 <div class="container">
                     <nav class="header-nav primary-navigation" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
                         <?php
-
-
-
-                        wp_nav_menu(array(
-                            'menu_class'     => 'c-navigation__main-menu',
-                            'theme_location' => 'main-menu',
-                            'walker' => 'Custom_Menu_Walker'
-                        )) ?>
+                        (new \_ThemeName\MenuService)->view();
+                        ?>
                     </nav>
                 </div>
             </div>

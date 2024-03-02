@@ -1,7 +1,7 @@
-$fa-font-path: "../../node_modules/font-awesome/fonts/";
-@import "../../node_modules/font-awesome/scss/font-awesome.scss";
-@import "../../node_modules/slick-carousel/slick/slick.scss";
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+$fa-font-path: "../../../node_modules/font-awesome/fonts/";
+@import "../../../node_modules/font-awesome/scss/font-awesome.scss";
+@import "../../../node_modules/slick-carousel/slick/slick.scss";
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
 @import "./settings/global";
 @import "./settings/colours";

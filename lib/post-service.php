@@ -73,3 +73,5 @@ class PostService
         }
     }
 }
+
+(new \_ThemeName\PostService)->registerActions();

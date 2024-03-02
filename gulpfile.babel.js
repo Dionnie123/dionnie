@@ -17,63 +17,89 @@ import rename from "gulp-rename";
 import wpPot from "gulp-wp-pot";
 
 const PRODUCTION = yargs.argv.prod;
-
+const server = browserSync.create();
 var sass = require("gulp-sass")(require("sass"));
 
 var paths = {
-  root: "./src",
-  html: {
-    src: "src/*.html",
+  rename: {
+    src: [
+      "archive-_themename_portfolio.php",
+      "single-_themename_portfolio.php",
+      "taxonomy-_themename_skills.php",
+      "taxonomy-_themename_project_type.php",
+    ],
   },
   styles: {
-    src: "src/scss/**/*.scss",
-    dest: "src/css",
+    src: "src/assets/scss/**/*.scss",
+    dest: "dist/assets/css",
   },
   scripts: {
-    src: "src/js/**/*.js",
-    dest: "src/js",
+    src: "src/assets/js/**/*.js",
+    dest: "dist/assets/js",
   },
+  images: {
+    src: "src/assets/images/**/*.{jpg,jpeg,png,svg,gif}",
+    dest: "dist/assets/images",
+  },
+  other: {
+    src: "src/assets/**/*",
+    dest: "dist/assets",
+  },
+
   plugins: {
-    src: ["../../plugins/dionnie-wp-dev/bundled/*"],
-    dest: ["/dist/lib/plugins"],
+    src: [
+      "../../plugins/_themename-metaboxes/packaged/*",
+      "../../plugins/_themename-shortcodes/packaged/*",
+      "../../plugins/_themename-post-types/packaged/*",
+    ],
+    dest: ["lib/plugins"],
+  },
+
+  package: {
+    src: [
+      "**/*",
+      "!.vscode",
+      "!node_modules{,/**}",
+      "!packaged{,/**}",
+      "!src{,/**}",
+      "!.babelrc",
+      "!.gitignore",
+      "!gulpfile.babel.js",
+      "!package.json",
+      "!package-lock.json",
+      "!archive-_themename_portfolio.php",
+      "!single-_themename_portfolio.php",
+      "!taxonomy-_themename_skills.php",
+      "!taxonomy-_themename_project_type.php",
+    ],
+    dest: "packaged",
   },
 };
 
+export const pot = () => {
+  return src("**/*.php")
+    .pipe(
+      wpPot({
+        domain: "_themename",
+        package: info.slug,
+      })
+    )
+    .pipe(dest(`languages/${info.name}.pot`));
+};
+
 export const styles = () => {
-  return src([paths.styles.src, "src/scss/admin.scss"])
+  return src(paths.styles.src)
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass().on("error", sass.logError))
     .pipe(gulpif(PRODUCTION, postcss([autoprefixer])))
     .pipe(gulpif(PRODUCTION, cleanCss({ compatibility: "ie8" })))
     .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
-    .pipe(dest("dist/css"))
+    .pipe(dest(paths.styles.dest))
     .pipe(server.stream());
 };
 
-export const images = () => {
-  return src("src/images/**/*.{jpg,jpeg,png,svg,gif}")
-    .pipe(gulpif(PRODUCTION, imagemin()))
-    .pipe(dest("dist/images"));
-};
-
-export const copy = () => {
-  return src([
-    "src/**/*",
-    "!src/{images,js,scss}",
-    "!src/{images,js,scss}/**/*",
-  ]).pipe(dest("dist"));
-};
-
-export const copyPlugins = () => {
-  return src(paths.plugins.src).pipe(dest(paths.plugins.dest));
-};
-
 export const scripts = () => {
-  return src([
-    "src/js/bundle.js",
-    "src/js/admin.js",
-    "src/js/customize-preview.js",
-  ])
+  return src(paths.scripts.src)
     .pipe(named())
     .pipe(
       webpack({
@@ -100,18 +126,29 @@ export const scripts = () => {
         },
       })
     )
-    .pipe(dest("dist/js"));
+    .pipe(dest(paths.scripts.dest));
 };
 
-export const watchForChanges = () => {
-  watch("src/scss/**/*.scss", styles, reload);
-  watch("src/images/**/*.{jpg,jpeg,png,svg,gif}", series(images, reload));
-  watch(
-    ["src/**/*", "!src/{images,js,scss}", "!src/{images,js,scss}/**/*"],
-    series(copy, reload)
-  );
-  watch("src/js/**/*.js", series(scripts, reload));
+export const images = () => {
+  return src(paths.images.src)
+    .pipe(gulpif(PRODUCTION, imagemin()))
+    .pipe(dest(paths.images.dest));
+};
+
+export const watchChanges = () => {
+  watch("src/assets/scss/**/*.scss", styles);
+  watch("src/assets/js/**/*.js", series(scripts, reload));
   watch("**/*.php", reload);
+  watch(paths.images.src, series(images, reload));
+  watch(paths.other.src, series(copy, reload));
+};
+
+export const copy = () => {
+  return src(paths.other.src).pipe(dest(paths.other.dest));
+};
+
+export const copyPlugins = () => {
+  return src(paths.plugins.src).pipe(dest(paths.plugins.dest));
 };
 
 export const clean = () => {
@@ -137,30 +174,28 @@ export const compress = () => {
     .pipe(replace("_themename-", info.slug + "-"))
     .pipe(replace("_themename", info.slug))
     .pipe(replace("_ThemeName", info.namespace))
-    .pipe(
-      rename(function (path) {
-        console.log(path);
-        if (path.basename.includes("_themename")) {
-          path.basename = `${info.slug}`;
-        }
-      })
-    )
     .pipe(zip(`${info.slug}.zip`))
-    .pipe(dest("bundled"));
+    .pipe(dest(paths.package.dest));
 };
 
-export const pot = () => {
-  return src("**/*.php")
+export const replace_filenames = () => {
+  return src(paths.rename.src)
     .pipe(
-      wpPot({
-        domain: "_themename",
-        package: info.slug,
+      rename((path) => {
+        path.basename = path.basename.replace("_themename", info.name);
       })
     )
-    .pipe(dest(`languages/${info.name}.pot`));
+    .pipe(dest("./"));
 };
 
-const server = browserSync.create();
+export const delete_replaced_filenames = () => {
+  return del(
+    paths.rename.src.map((filename) =>
+      filename.replace("_themename", info.name)
+    )
+  );
+};
+
 export const serve = (done) => {
   server.init({
     proxy: "http://provider.test/",
@@ -174,15 +209,19 @@ export const reload = (done) => {
 
 export const dev = series(
   clean,
-  parallel(styles, images, copy, scripts),
+  parallel(styles, scripts, images, copy),
   serve,
-  watchForChanges
+  watchChanges
 );
 export const build = series(
   clean,
-  parallel(styles, images, copy, scripts),
+  parallel(styles, scripts, images, copy),
   copyPlugins,
-  pot,
-  compress
+  pot
 );
+
+export const bundle = () => {
+  return series(build, replace_filenames, compress, delete_replaced_filenames);
+};
+
 export default dev;
