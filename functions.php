@@ -11,6 +11,8 @@ require_once(get_template_directory() . '/lib/post-service.php');
 require_once(get_template_directory() . '/lib/menu-service.php');
 require_once(get_template_directory() . '/lib/include-plugins.php');
 
+require_once(get_template_directory() . '/lib/post-metaboxes.php');
+
 function current_year_shortcode()
 {
     $currentYear = date('Y');
