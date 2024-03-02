@@ -17,7 +17,7 @@ import rename from "gulp-rename";
 import wpPot from "gulp-wp-pot";
 
 const PRODUCTION = yargs.argv.prod;
-const server = browserSync.create();
+
 var sass = require("gulp-sass")(require("sass"));
 
 var paths = {
@@ -30,7 +30,7 @@ var paths = {
     ],
   },
   styles: {
-    src: "src/assets/scss/**/*.scss",
+    src: ["src/assets/scss/bundle.scss", "src/assets/scss/admin.scss"],
     dest: "dist/assets/css",
   },
   scripts: {
@@ -42,7 +42,11 @@ var paths = {
     dest: "dist/assets/images",
   },
   other: {
-    src: "src/assets/**/*",
+    src: [
+      "src/assets/**/*",
+      "!src/assets/{images,js,scss}",
+      "!src/assets/{images,js,scss}/**/*",
+    ],
     dest: "dist/assets",
   },
 
@@ -196,6 +200,7 @@ export const delete_replaced_filenames = () => {
   );
 };
 
+const server = browserSync.create();
 export const serve = (done) => {
   server.init({
     proxy: "http://provider.test/",
