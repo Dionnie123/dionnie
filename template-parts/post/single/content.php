@@ -1,4 +1,4 @@
-<article <?php post_class('c-post u-margin-bottom-20'); ?>>
+<article <?php post_class('c-post card'); ?>>
 
     <div class="c-post__inner">
 
@@ -11,8 +11,9 @@
         <?php get_template_part('template-parts/post/single/header'); ?>
 
         <?php if (is_single()) { ?>
-            <div class="c-post__content">
-                <?php the_content();
+            <div class="c-post__content card-body">
+                <?php
+                the_content();
                 wp_link_pages();
                 ?>
             </div>
@@ -26,7 +27,6 @@
             <?php get_template_part('template-parts/post/single/footer'); ?>
         <?php } ?>
         <?php if (!is_single()) {
-            _themename_readmore_link();
         } ?>
     </div>
 </article>

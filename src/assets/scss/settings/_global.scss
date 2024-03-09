@@ -48,16 +48,3 @@ $breakpoints: (
   xlarge: 1200px,
 );
 $global-width: 1200 !default;
-
-/********** CUSTOM RULES **********/
-ol,
-ul,
-dl {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-ol,
-ul {
-  padding-left: 0;
-}

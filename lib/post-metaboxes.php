@@ -2,25 +2,35 @@
 
 namespace _ThemeName;
 
-class Post
+class PostType
 {
 
     protected $detail;
 
     public function init()
     {
-        $this->detail = (new PostDetailMetaBox());
+        $this->detail = (new PostTypeDetailMetaBox());
     }
 
     public function get_layout()
     {
         return sanitize_text_field(get_post_meta(get_the_ID(), '_themename_post_layout', true));
     }
+
+    public function get_author()
+    {
+        return sanitize_text_field(get_post_meta(get_the_ID(), '_themename_post_author', true));
+    }
+
+    public function get_date()
+    {
+        return sanitize_text_field(get_post_meta(get_the_ID(), '_themename_post_published_date', true));
+    }
 }
 
 
 
-class PostDetailMetaBox
+class PostTypeDetailMetaBox
 {
 
     protected  $author = "_themename_post_author";
@@ -49,9 +59,9 @@ class PostDetailMetaBox
     {
         add_meta_box(
             '_themename_post_detail_metabox', // Unique ID
-            'Post Details',           // Box title
+            'PostType Details',           // Box title
             array($this, '_themename_post_detail_metabox_html'), // Callback function to render the content
-            'post', // Post type
+            'post', // PostType type
             'normal', // Context (normal, advanced, side)
             'high' // Priority (high, core, default, low)
         );
@@ -71,20 +81,17 @@ class PostDetailMetaBox
 
         wp_nonce_field($this->nonce_action, $this->nonce_field);
 ?>
-<label for="<?php echo $this->author; ?>">Author:</label>
-<input class="widefat" type="text" id="<?php echo $this->author; ?>" name="<?php echo $this->author; ?>"
-    value="<?php echo esc_attr($author); ?>" />
+        <label for="<?php echo $this->author; ?>">Author:</label>
+        <input class="widefat" type="text" id="<?php echo $this->author; ?>" name="<?php echo $this->author; ?>" value="<?php echo esc_attr($author); ?>" />
 
-<label for="<?php echo $this->published_date; ?>">Published Date:</label>
-<input class="widefat" type="text" id="<?php echo $this->published_date; ?>" name="<?php echo $this->published_date; ?>"
-    value="<?php echo esc_attr($published_date); ?>" />
+        <label for="<?php echo $this->published_date; ?>">Published Date:</label>
+        <input class="widefat" type="text" id="<?php echo $this->published_date; ?>" name="<?php echo $this->published_date; ?>" value="<?php echo esc_attr($published_date); ?>" />
 
-<label for="<?php echo $this->layout; ?>">Layout:</label>
-<select class="widefat" name="<?php echo $this->layout; ?>" id="<?php echo $this->layout; ?>"
-    value="<?php echo esc_attr($layout); ?>">
-    <option <?php selected($layout, "full") ?> value="full">Full Width</option>
-    <option <?php selected($layout, "sidebar") ?> value="sidebar">Post with Sidebar</option>
-</select>
+        <label for="<?php echo $this->layout; ?>">Layout:</label>
+        <select class="widefat" name="<?php echo $this->layout; ?>" id="<?php echo $this->layout; ?>" value="<?php echo esc_attr($layout); ?>">
+            <option <?php selected($layout, "full") ?> value="full">Full Width</option>
+            <option <?php selected($layout, "sidebar") ?> value="sidebar">PostType with Sidebar</option>
+        </select>
 
 <?php
     }
@@ -116,4 +123,4 @@ class PostDetailMetaBox
     }
 }
 
-(new \_ThemeName\Post)->init();
+(new \_ThemeName\PostType)->init();

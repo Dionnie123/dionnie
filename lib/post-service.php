@@ -53,8 +53,24 @@ class PostService
 
     public function getAll()
     {
-        $query = new WP_Query($this->args());
-        return $query;
+
+        $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => 6,
+        );
+        if (isset($_GET['s'])) {
+            $args['s'] = sanitize_text_field($_GET['s']);
+        }
+
+        if (isset($_GET['order'])) {
+            $args['order'] = sanitize_text_field($_GET['order']);
+        }
+
+        if (isset($_GET['category_name'])) {
+            $args['category_name'] = sanitize_text_field($_GET['category_name']);
+        }
+        return new WP_Query($args);
     }
 
 
