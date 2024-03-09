@@ -1,79 +1,72 @@
 <?php
 
-$categories = get_categories();
+$search_query = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
+$order = isset($_GET['order']) ? $_GET['order'] : 'desc';
+$category_name = isset($_GET['category_name']) ? sanitize_text_field($_GET['category_name']) : '';
 
-$title = $_GET['s'] ?? '';
-$category = $_GET['category_name'] ?? '';
+
+
+// Modify the main query based on filter parameters
+function custom_template_filter_posts($query)
+{
+    global $search_query, $order, $category_name;
+    if (!is_admin() && $query->is_main_query()) {
+        if ($query->is_search()) {
+            $query->set('s', $search_query);
+        }
+
+        if ($order === 'asc' || $order === 'desc') {
+            $query->set('order', $order);
+        }
+
+        if (!empty($category_name)) {
+            $query->set('category_name', $category_name);
+        }
+    }
+}
+add_action('pre_get_posts', 'custom_template_filter_posts');
 
 ?>
 
-
-
 <div class="container my-3">
     <div class="row justify-content-end ">
-        <form onsubmit="submitForm()">
-            <div class="col d-flex d-grid gap-2">
+        <form role="search" method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
 
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search by Title" name="s" aria-label="Search by Title" aria-describedby="basic-addon2" value="<?php echo esc_attr($title); ?>">
-                    <button class="btn btn-secondary clear" type="button" id="button-addon2" onclick="clear()">X</button>
+            <div class="row">
+                <div class="col">
+                    <label for="s">Search:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" value="<?php echo esc_attr($search_query); ?>" name="s" aria-label="Search" aria-describedby="basic-addon2">
+                        <button class="btn btn-secondary clear" type="button" id="button-addon2" onclick="clear()">X</button>
+                    </div>
+
                 </div>
-
-                <input type="hidden" name="orderby" value="<?php echo esc_attr(isset($_GET['orderby']) ? $_GET['orderby'] : ''); ?>">
-                <input type="hidden" name="order" value="<?php echo esc_attr(isset($_GET['order']) ? $_GET['order'] : ''); ?>">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" onclick="submitForm()">Search</button>
-                </div>
-
-                <div>
-                    <select onchange="submitForm()" class="form-select " name="category_name" id="category-filter" aria-label="Default select example">
-                        <option value>All Categories</option>
-                        <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo esc_attr($category->slug); ?>" <?php selected($category->slug, get_query_var('category_name')); ?>>
-                                <?php echo esc_html($category->name); ?>
-                            </option>
-                        <?php endforeach; ?>
+                <div class="col">
+                    <label for="order">Sort Order:</label>
+                    <select class="form-control" name="order" id="order">
+                        <option value="asc" <?php selected('asc', $order); ?>>Ascending</option>
+                        <option value="desc" <?php selected('desc', $order); ?>>Descending</option>
                     </select>
                 </div>
-
-                <div>
-                    <select onchange="submitForm()" class="form-select " name="order_filter" aria-label="Default select example">
-                        <option value="">Sort</option>
-                        <option value='&orderby=date&order=asc'>Date ASC</option>
-                        <option value='&orderby=date&order=desc'>Date DESC</option>
-                        <option value='&orderby=title&order=asc'>Title ASC</option>
-                        <option value='&orderby=title&order=desc'>Title DESC</option>
+                <div class="col">
+                    <?php
+                    $categories = get_categories();
+                    ?>
+                    <label for="category_name">Category:</label>
+                    <select class="form-select" name="category_name" id="category_name">
+                        <option value="" <?php selected('', $category_name); ?>>All Categories</option>
+                        <?php
+                        foreach ($categories as $category) {
+                            echo '<option value="' . esc_attr($category->slug) . '" ' . selected($category->slug, $category_name) . '>' . esc_html($category->name) . '</option>';
+                        }
+                        ?>
                     </select>
+                </div>
+                <div class="col">
+                    <label for="searchsubmit">&nbsp;</label>
+                    <input class="btn btn-secondary d-block" type="submit" id="searchsubmit" value="Filter">
                 </div>
             </div>
         </form>
-
-
     </div>
 </div>
-
-<script>
-    (function($) {
-        "use strict";
-        $(function() {
-            $("button.clear").click(function() {
-                window.location.replace("<?php bloginfo('url') ?>");
-            });
-        });
-    }(jQuery));
-
-    function submitForm() {
-        (function($) {
-            "use strict";
-            $(function() {
-                var title = 's=' + $("input[name=s]").val();
-                var category = '&category_name=' + $('select[name=category_name]').find("option:selected")
-                    .val();
-                var order = $('select[name=order_filter]').find("option:selected").val();
-
-                var queryString = title + category + order;
-                window.location.href = "<?php bloginfo('url') ?>" + '?' + queryString;
-            });
-        }(jQuery));
-    }
-</script>

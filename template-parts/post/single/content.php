@@ -1,18 +1,18 @@
 <article <?php post_class('c-post u-margin-bottom-20'); ?>>
-    
+
     <div class="c-post__inner">
 
-        <?php if(get_the_post_thumbnail() !== '') { ?>
+        <?php if (get_the_post_thumbnail() !== '') { ?>
             <div class="c-post__thumbnail">
-                <?php the_post_thumbnail( '_themename-blog-image' ); ?>
+                <?php the_post_thumbnail('_themename-blog-image'); ?>
             </div>
         <?php } ?>
-        
-        <?php get_template_part('template-parts/post/header'); ?>
-        
-        <?php if(is_single( )) { ?>
+
+        <?php get_template_part('template-parts/post/single/header'); ?>
+
+        <?php if (is_single()) { ?>
             <div class="c-post__content">
-                <?php the_content(); 
+                <?php the_content();
                 wp_link_pages();
                 ?>
             </div>
@@ -22,9 +22,11 @@
             </div>
         <?php } ?>
 
-        <?php if(is_single( )) { ?>
-            <?php get_template_part('template-parts/post/footer'); ?>
+        <?php if (is_single()) { ?>
+            <?php get_template_part('template-parts/post/single/footer'); ?>
         <?php } ?>
-        <?php if(!is_single()) { _themename_readmore_link(); } ?>
+        <?php if (!is_single()) {
+            _themename_readmore_link();
+        } ?>
     </div>
 </article>

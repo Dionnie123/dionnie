@@ -203,7 +203,7 @@ export const delete_replaced_filenames = () => {
 const server = browserSync.create();
 export const serve = (done) => {
   server.init({
-    proxy: "http://provider.test/",
+    proxy: "http://provider.com/",
   });
   done();
 };

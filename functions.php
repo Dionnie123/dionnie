@@ -8,7 +8,7 @@ require_once(get_template_directory() . '/lib/hooks/footer-hooks.php');
 require_once(get_template_directory() . '/lib/sidebars.php');
 require_once(get_template_directory() . '/lib/navigation.php');
 require_once(get_template_directory() . '/lib/post-service.php');
-require_once(get_template_directory() . '/lib/menu-service.php');
+require_once(get_template_directory() . '/lib/menu.php');
 require_once(get_template_directory() . '/lib/include-plugins.php');
 require_once(get_template_directory() . '/lib/post-metaboxes.php');
 

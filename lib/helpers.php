@@ -33,8 +33,8 @@ function bootstrap_pagination($query = null, $args = [])
     }
     $big = 999999999;
     $default = [
-        'post_type' => 'post',
-        'posts_per_page' => 6,
+
+
         'base' => str_replace($big, '%#%', get_pagenum_link($big)),
         'format' => '?paged=%#%',
         'current' => max(1, get_query_var('paged')),
@@ -44,7 +44,6 @@ function bootstrap_pagination($query = null, $args = [])
         'show_all' => false,
         'end_size' => 2,
         'mid_size' => 6,
-        'ignore_sticky_posts' => 1,
         'total' => $query->max_num_pages,
     ];
     $args = array_replace($default,  is_array($args) ? $args : []);
@@ -85,26 +84,6 @@ function countable_text($singular, $plural, $count)
 }
 
 
-
-
-
-function _themename_readmore_link()
-{
-    echo '<a class="c-post__readmore" href="' . esc_url(get_permalink()) . '" title="' . the_title_attribute(['echo' => false]) . '">';
-    /* translators: %s: Post Title */
-    printf(
-        wp_kses(
-            __('Read More <span class="u-screen-reader-text">About %s</span>', '_themename'),
-            [
-                'span' => [
-                    'class' => []
-                ]
-            ]
-        ),
-        get_the_title()
-    );
-    echo '</a>';
-}
 
 
 function _themename_private_metakey($text)

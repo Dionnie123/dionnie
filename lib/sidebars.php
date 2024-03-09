@@ -9,12 +9,8 @@ function _themename_sidebar_widgets()
         'description' => esc_html__('This sidebar is blog post page', '_themename'),
         'before_widget' => '<section id="%1$s" class="c-sidebar-widget %2$s">',
         'after_widget' => '</section>',
-        'before_title' => '<h5>',
-        'after_title' => '</h5>',
-
-
-
-
+        'before_title' => '<h6>',
+        'after_title' => '</h6>',
     ));
 }
 

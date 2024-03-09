@@ -29,5 +29,4 @@ foreach ($inline_styles_selectors as $selector => $props) {
 $inline_styles .= "root:{";
 $inline_styles .= "--bs-link-color: red;";
 $inline_styles .= "} ";
-
 $inline_styles .= "fuck";
