@@ -140,7 +140,7 @@ export const images = () => {
 };
 
 export const watchChanges = () => {
-  watch("src/assets/scss/**/*.scss", styles);
+  watch("src/assets/scss/**/*.scss", series(styles, reload));
   watch("src/assets/js/**/*.js", series(scripts, reload));
   watch("**/*.php", reload);
   watch(paths.images.src, series(images, reload));
