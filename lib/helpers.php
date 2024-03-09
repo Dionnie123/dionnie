@@ -25,16 +25,23 @@ function is_string_in_array($needle, $haystack = [])
  * @param array $args       Associative array to override default pagination settings
  * 
  */
-function bootstrap_pagination($query = null, $args = [])
+
+
+//https://njengah.com/pagination-code-in-wordpress/
+function bootstrap_pagination($query = null)
 {
+
+    if (is_singular())
+        return;
+    /** Stop execution if there's only 1 page */
+    if ($query->max_num_pages <= 1)
+        return;
     //Fallback to $query global variable if no query passed
     if ($query === false) {
         global $wp_query;
     }
     $big = 999999999;
     $default = [
-
-
         'base' => str_replace($big, '%#%', get_pagenum_link($big)),
         'format' => '?paged=%#%',
         'current' => max(1, get_query_var('paged')),
@@ -46,7 +53,7 @@ function bootstrap_pagination($query = null, $args = [])
         'mid_size' => 6,
         'total' => $query->max_num_pages,
     ];
-    $args = array_replace($default,  is_array($args) ? $args : []);
+    $args = array_replace($query->query_vars,  $default);
     $listString = paginate_links($args);
 
     // Replace classes and modify pagination structure
