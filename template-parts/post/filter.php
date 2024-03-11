@@ -6,26 +6,6 @@ $category_name = isset($_GET['category_name']) ? sanitize_text_field($_GET['cate
 
 
 
-// Modify the main query based on filter parameters
-function custom_template_filter_posts($query)
-{
-    global $search_query, $order, $category_name;
-    if (!is_admin() && $query->is_main_query()) {
-        if ($query->is_search()) {
-            $query->set('s', $search_query);
-        }
-
-        if ($order === 'asc' || $order === 'desc') {
-            $query->set('order', $order);
-        }
-
-        if (!empty($category_name)) {
-            $query->set('category_name', $category_name);
-        }
-    }
-}
-add_action('pre_get_posts', 'custom_template_filter_posts');
-
 ?>
 
 <div class="container my-3">

@@ -33,13 +33,15 @@ class PostService
     public function getAll()
     {
 
+
+
         $args = array(
             'post_type' => 'post',
             'post_status' => 'publish',
             'posts_per_page' => 6,
             'paged'     => get_query_var('paged') ? get_query_var('paged') : 1, //paginated
         );
-        /*   if (isset($_GET['s'])) {
+        if (isset($_GET['s'])) {
             $args['s'] = sanitize_text_field($_GET['s']);
         }
 
@@ -49,7 +51,7 @@ class PostService
 
         if (isset($_GET['category_name'])) {
             $args['category_name'] = sanitize_text_field($_GET['category_name']);
-        } */
+        }
         return new WP_Query($args);
     }
 

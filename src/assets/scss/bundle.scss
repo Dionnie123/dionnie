@@ -1,5 +1,8 @@
 @import "../../../node_modules/slick-carousel/slick/slick.scss";
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+$fa-font-path: "../webfonts";
+@import "./fontawesome6/fontawesome.scss";
+@import "./fontawesome6/solid.scss";
 
 @import "./settings/global";
 @import "./settings/colours";
