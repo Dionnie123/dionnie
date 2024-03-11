@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+@font-face {
+  font-family: "RE4";
+  src: url("../fonts/re4.ttf");
+}
+$body-font-family: "Open Sans", serif !default;
+$global-weight-normal: 400 !default;
+$global-lineheight: 120% !default;
+$base-font-size: 100% !default;
+
+html {
+  font-size: $base-font-size;
+}
+
+body {
+  font-family: $body-font-family;
+  font-weight: $global-weight-normal;
+  line-height: $global-lineheight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
