@@ -2,13 +2,11 @@
 
 
     <div class="input-group">
-        <input class="form-control form-control-dark" type="search" name="s" placeholder="Search"
-            value="<?php echo esc_attr(get_search_query()) ?>">
+        <input class="form-control form-control-dark" type="search" name="s" placeholder="Search" value="<?php echo esc_attr(get_search_query()) ?>">
 
 
 
-        <button class="btn btn-secondary clear" type="submit"> <i class="fas fa-search"></i> <i
-                class="fas fa-search"></i> </button>
+        <button class="btn btn-secondary clear" type="submit"> <i class="fas fa-search"></i> </button>
     </div>
 
 
