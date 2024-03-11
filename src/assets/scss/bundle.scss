@@ -1,13 +1,13 @@
+@import "./base/normalize";
+@import "./base/body";
+@import "./base/print";
+@import "./base/wp";
+
 @import "../../../node_modules/slick-carousel/slick/slick.scss";
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 $fa-font-path: "../fonts/fontawesome6-webfonts/";
 @import "./fontawesome6/fontawesome.scss";
 @import "./fontawesome6/solid.scss";
-
-@import "./base/normalize";
-@import "./base/body";
-@import "./base/print";
-@import "./base/wp";
 
 @import "./global/layout";
 @import "./global/colours";
@@ -21,4 +21,3 @@ $fa-font-path: "../fonts/fontawesome6-webfonts/";
 @import "./components/c-footer";
 @import "./components/c-archive-page-header";
 @import "./components/c-post";
-@import "./components/c-sidebar";
