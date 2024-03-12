@@ -10,6 +10,7 @@ $site_info = get_theme_mod('_themename_site_info', '');
                 <div class="col c-site-info__text">
                     <?php
                     $allowed = array('a' => array(
+                        'class' => array(),
                         'href' => array(),
                         'title' => array()
                     ));

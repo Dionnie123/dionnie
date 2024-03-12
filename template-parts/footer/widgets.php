@@ -1,6 +1,6 @@
 <?php
 $columns = _themename_sanitize_footer_layout();
-$footer_bg = _themename_sanitize_footer_bg();
+$footer_bg = _themename_sanitize_footer_bg(get_theme_mod('_themename_footer_bg', 'dark'));
 
 
 

@@ -1,5 +1,5 @@
 @use "sass:color";
 
 .sticky > .card {
-  background: color.adjust($primary, $lightness: +50%) !important;
+  background: color.adjust($primary, $lightness: +50%);
 }

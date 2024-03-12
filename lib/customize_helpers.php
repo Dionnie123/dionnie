@@ -21,9 +21,10 @@ function _themename_sanitize_checkbox($checked)
     return (isset($checked) && $checked === true) ? true : false;
 }
 
-function _themename_sanitize_footer_bg()
+
+
+function _themename_sanitize_footer_bg($input)
 {
-    $input = get_theme_mod('_themename_footer_bg', 'dark');
     $valid = array('light', 'dark');
     if (in_array($input, $valid, true)) {
         return $input;
@@ -32,9 +33,11 @@ function _themename_sanitize_footer_bg()
 }
 
 
+
 function _themename_sanitize_site_info($input)
 {
     $allowed = array('a' => array(
+        'class' => array(),
         'href' => array(),
         'title' => array()
     ));
