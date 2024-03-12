@@ -1,7 +1,13 @@
 .widget_recent_entries li {
   list-style-type: none;
-}
+  background: $light;
+  border-radius: 5px;
+  padding: 8px;
+  & > a {
+    color: white !important;
+  }
 
-.widget_recent_entries li:not(:last-child) {
-  margin-bottom: 10px;
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
 }

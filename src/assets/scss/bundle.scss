@@ -13,11 +13,9 @@ $fa-font-path: "../fonts/fontawesome6-webfonts/";
 @import "./fontawesome6/fontawesome.scss";
 @import "./fontawesome6/solid.scss";
 
-@import "./objects/calendar";
 @import "./objects/_widget_recent_entries";
 
 @import "./components/c-navigation";
 @import "./components/custom-logo-link";
-@import "./components/c-footer";
 @import "./components/c-archive-page-header";
 @import "./components/c-post";

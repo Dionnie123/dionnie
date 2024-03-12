@@ -1,11 +1,9 @@
-@use "sass:color";
-
 $primary: #0074d9;
-$secondary: color.adjust($primary, $lightness: -20%);
+$secondary: pink;
+$danger: #dc3545;
 $success: yellowgreen;
 $info: blue;
-$warning: beige;
-$danger: #dc3545;
+$warning: orange;
 $light: grey;
 $dark: darkgrey;
 

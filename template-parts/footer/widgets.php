@@ -13,7 +13,7 @@ foreach ($columns as $i => $column) {
 
 ?>
 <?php if ($widgets_active) { ?>
-    <div class="bg-white p-5">
+    <div class="p-5">
         <div class="container">
             <div class="row gx-5 gy-5">
                 <?php

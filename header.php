@@ -3,7 +3,7 @@ require_once(get_template_directory() . '/lib/custom_menu_walker.php');
 ?>
 
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> data-bs-theme="darkx">
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
