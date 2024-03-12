@@ -2,6 +2,13 @@ Resources:
 https://devsnap.me/css-menu
 https://generatewp.com/login/ mbulingit:Bcmnvxz,./123
 https://www.wpbeginner.com/beginners-guide/6-cool-things-you-can-do-with-sticky-posts-in-wordpress/
+https://app.codewp.ai/
+
+BEST OPENSOURCE/BOOTSTRAP:
+https://www.layoutit.com/build
+
+Bootstrap Customizer:
+https://pikock.github.io/bootstrap-magic/app/index.html#!/editor
 
 NOTES:
 

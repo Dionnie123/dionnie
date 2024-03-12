@@ -1,51 +1,24 @@
-$body-background: #f5f5f5 !default;
-$body-font-color: #000000 !default;
+@use "sass:color";
 
-$primary-colour: rgb(32, 221, 174);
-$primary-colour-dim: #0a969b;
+$primary: #0074d9;
+$secondary: color.adjust($primary, $lightness: -20%);
+$success: yellowgreen;
+$info: blue;
+$warning: beige;
+$danger: #dc3545;
+$light: grey;
+$dark: darkgrey;
 
-$secondary-colour: #49ff11;
-$alert-colour: #f03;
-$warning-colour: yellow;
-$success-colour: green;
-
-$grey: #ccc;
-$light-grey: #f1f1f1;
-$medium-grey: #050505;
-$dark-grey: #333333;
-
-//pagination
 $pagination-active-bg: #25408f;
 $pagination-active-border-color: #25408f;
 
-//bootstrap overrides
 $theme-colors: (
-  primary: #25408f,
-  // override some or all base color definitions
-  secondary: #b6bfd9,
-  success: #3e8d63,
-  dark: #343a40,
-  facebook: #3b5998,
-  // you can add as many 'custom' colors as you like
-  twitter: #55acee,
-  linkedin: #007bb5,
-  gmail: #dd5347,
-  whatsapp: #12af0a,
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
 );
-
-body {
-  background: $body-background;
-  color: $body-font-color;
-}
-
-:focus {
-  outline: 2px solid $primary-colour;
-}
-::selection {
-  background: $primary-colour;
-  color: #ffffff;
-}
-::-moz-selection {
-  background: $primary-colour;
-  color: #ffffff;
-}
