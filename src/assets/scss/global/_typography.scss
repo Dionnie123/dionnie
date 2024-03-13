@@ -4,8 +4,12 @@
   font-family: "RE4";
   src: url("../fonts/re4.ttf");
 }
+@font-face {
+  font-family: "Monolisa";
+  src: url("../fonts/MonoLisa-normal.woff2");
+}
 
-//$font-family-base: "RE4";
+$font-family-base: "Monolisa";
 $font-size-base: 1rem;
 
 body {
