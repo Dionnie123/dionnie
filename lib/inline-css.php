@@ -16,5 +16,5 @@ foreach ($inline_styles_selectors as $selector => $props) {
         $inline_styles .= "{$prop}: " . sanitize_hex_color(get_theme_mod($value, '#20ddae')) . ";";
     }
 
-    $inline_styles .= "} xcx";
+    $inline_styles .= "} ";
 }

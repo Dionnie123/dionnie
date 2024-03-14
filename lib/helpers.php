@@ -86,7 +86,7 @@ function countable_text($singular, $plural, $count)
                 '_themename'
             )
         ),
-        $count
+        number_format_i18n($count)
     );
 }
 

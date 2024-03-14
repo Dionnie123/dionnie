@@ -8,6 +8,7 @@ require_once(get_template_directory() . '/lib/custom_menu_walker.php');
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <?php wp_head(); ?>
 </head>
 
@@ -25,7 +26,8 @@ require_once(get_template_directory() . '/lib/custom_menu_walker.php');
 
             <div class="c-navigation">
                 <div class="container">
-                    <nav class="header-nav primary-navigation" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
+                    <nav class="header-nav primary-navigation" role="navigation"
+                        aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
                         <?php
                         (new \_ThemeName\MenuService)->view();
                         ?>

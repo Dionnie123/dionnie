@@ -7,15 +7,17 @@ get_header(); ?>
             <div class=" <?php echo is_active_sidebar('primary-sidebar') ?  'col-lg-9' : 'col-lg-12'   ?> ">
 
                 <?php
-                    while (have_posts()) :
-                        the_post();
-                    ?>
+                while (have_posts()) :
+                    the_post();
+                ?>
                 <?php get_template_part('template-parts/post/single/content'); ?>
+
+                <?php get_template_part('template-parts/post/single/author') ?>
 
                 <?php
 
 
-                    endwhile; ?>
+                endwhile; ?>
 
             </div>
 
