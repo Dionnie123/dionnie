@@ -38,7 +38,7 @@ class PostService
         $args = array(
             'post_type' => 'post',
             'post_status' => 'publish',
-            'posts_per_page' => 6,
+            'posts_per_page' => 9,
             'paged'     => get_query_var('paged') ? get_query_var('paged') : 1, //paginated
         );
         if (isset($_GET['s'])) {

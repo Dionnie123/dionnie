@@ -18,16 +18,21 @@
             <p>Published <?php echo $relative_time; ?></p>
 
 
-            <button type="button" class="btn btn-sm btn-primary position-relative">
-                Comments
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    <?php echo countable_text('1', '%s', get_comments_number()); ?>
-                    <span class="visually-hidden">comments</span>
-                </span>
-            </button>
 
-            <?php get_template_part('template-parts/post/loop-item/button-readmore',) ?>
-            <?php get_template_part('template-parts/post/loop-item/button-delete',) ?>
+
+            <div class="d-inline  gap-3">
+                <button type="button" class="btn btn-sm btn-primary position-relative">
+                    Comments
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <?php echo countable_text('1', '%s', get_comments_number()); ?>
+                        <span class="visually-hidden">comments</span>
+                    </span>
+                </button>
+                <?php get_template_part('template-parts/post/loop-item/button-readmore',) ?>
+                <?php get_template_part('template-parts/post/loop-item/button-delete',) ?>
+
+            </div>
+
             <?php get_template_part('template-parts/post/loop-item/table-metabox',) ?>
         </div>
     </div>
