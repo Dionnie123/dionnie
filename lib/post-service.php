@@ -3,6 +3,7 @@
 namespace _ThemeName;
 
 use WP_Query;
+use WP_Session;
 
 class PostService
 {
@@ -64,6 +65,13 @@ class PostService
                 if (isset($_GET['nonce']) && wp_verify_nonce($_GET['nonce'], $this->delete . '_' . $_GET['post'])) {
                     $post_id = $_GET['post'];
                     wp_trash_post($post_id);
+                    set_transient('post_deleted', true, 0);
+
+
+
+
+
+
                     wp_safe_redirect(home_url());
                     die;
                 }

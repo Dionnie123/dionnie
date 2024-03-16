@@ -10,6 +10,8 @@ https://www.layoutit.com/build
 Bootstrap Customizer:
 https://pikock.github.io/bootstrap-magic/app/index.html#!/editor
 
+https://codex.wordpress.org/Post_Type_Templates
+
 NOTES:
 
 Node.js has two module systems:

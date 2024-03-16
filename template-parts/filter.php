@@ -10,7 +10,7 @@ $category_name = isset($_GET['category_name']) ? sanitize_text_field($_GET['cate
 
 <form role="search" method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
 
-    <div class="row gx-2">
+    <div class="row gx-2 mb-3">
         <div class="col">
             <label for="s">Search:</label>
             <div class="input-group">
