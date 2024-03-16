@@ -15,7 +15,7 @@
             $relative_time = human_time_diff(strtotime($post_date), current_time('timestamp')) . ' ago';
             ?>
 
-            <p>Published <?php echo $relative_time; ?></p>
+            <p>Published Item-index <?php echo $relative_time; ?></p>
 
 
 
@@ -28,12 +28,12 @@
                         <span class="visually-hidden">comments</span>
                     </span>
                 </button>
-                <?php get_template_part('template-parts/post/loop-item/button-readmore',) ?>
-                <?php get_template_part('template-parts/post/loop-item/button-delete',) ?>
+                <?php get_template_part('template-parts/post/button-readmore',) ?>
+                <?php get_template_part('template-parts/post/button-delete',) ?>
 
             </div>
 
-            <?php get_template_part('template-parts/post/loop-item/table-metabox',) ?>
+            <?php get_template_part('template-parts/post/table-metabox',) ?>
         </div>
     </div>
 </article>

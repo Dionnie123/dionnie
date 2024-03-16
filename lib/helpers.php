@@ -58,7 +58,7 @@ function bootstrap_pagination($query = null)
 
 
     // Replace classes and modify pagination structure
-    $listString = str_replace("<ul class='page-numbers'>", '<ul class="pagination justify-content-center mt-5">', $listString);
+    $listString = str_replace("<ul class='page-numbers'>", '<ul class="pagination justify-content-center">', $listString);
     $listString = str_replace('page-numbers', 'page-link', $listString);
     $listString = str_replace('<li>', '<li class="page-item">', $listString);
     $listString = str_replace(

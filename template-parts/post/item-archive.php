@@ -2,9 +2,13 @@
     <div class="card h-100">
 
         <?php if (has_post_thumbnail()) : ?>
-            <img style="min-height: 180px;max-height: 180px; object-fit: cover;" src="<?php the_post_thumbnail_url('medium'); ?>" class="card-img-top" alt="<?php echo esc_attr(get_the_title() ?: 'Post Thumbnail'); ?>">
+        <img style="min-height: 180px;max-height: 180px; object-fit: cover;"
+            src="<?php the_post_thumbnail_url('medium'); ?>" class="card-img-top"
+            alt="<?php echo esc_attr(get_the_title() ?: 'Post Thumbnail'); ?>">
         <?php else : ?>
-            <img style="min-height: 180px;max-height: 180px; object-fit: cover;" src="<?php echo esc_url(get_template_directory_uri()) . '/dist/assets/images/post-placeholder.jpg'; ?>" class="card-img-top mh-50" alt="Placeholder Image">
+        <img style="min-height: 180px;max-height: 180px; object-fit: cover;"
+            src="<?php echo esc_url(get_template_directory_uri()) . '/dist/assets/images/post-placeholder.jpg'; ?>"
+            class="card-img-top mh-50" alt="Placeholder Image">
         <?php endif; ?>
 
         <div class="card-body">
@@ -19,7 +23,7 @@
             $relative_time = human_time_diff(strtotime($post_date), current_time('timestamp')) . ' ago';
             ?>
 
-            <p>Published <?php echo $relative_time; ?></p>
+            <p>Published Item archive <?php echo $relative_time; ?></p>
 
 
             <button type="button" class="btn btn-sm btn-primary position-relative">
