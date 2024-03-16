@@ -3,52 +3,13 @@
 
 
 
-require_once('customize_helpers.php');
+//require('customize-helpers.php');
 
 
 function _themename_customize_register($wp_customize)
 {
 
-    /*---------------------------------------------------------------------------
-* Start of General Options
-*---------------------------------------------------------------------------*/
-    $wp_customize->add_section('_themename_general_options', array(
-        'title' => esc_html__('General Options', '_themename'),
-        'description' => esc_html__('You can change general options from here.', '_themename')
-    ));
-    /*---------------------------------------------------------------------------
-* Accent Color
-*---------------------------------------------------------------------------*/
-    $wp_customize->add_setting('_themename_accent_colour', array(
-        'default' => '#20ddae',
-        'transport' => 'postMessage',
-        'sanitize_callback' => 'sanitize_hex_color'
-    ));
 
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, '_themename_accent_colour', array(
-        'label' => __('Accent Color', '_themename'),
-        'section' => '_themename_general_options',
-    )));
-    /*---------------------------------------------------------------------------
-* Portfolio Slug
-*---------------------------------------------------------------------------*/
-
-    $wp_customize->add_setting('_themename_portfolio_slug', array(
-        'default'           => 'portfolio',
-        'transport'         => 'postMessage',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-
-    $wp_customize->add_control('_themename_portfolio_slug', array(
-        'type'    => 'text',
-        'label'    => esc_html__('Portfolio Slug', '_themename'),
-        'description' => esc_html__('Will appear in the archive url', '_themename'),
-        'section'  => '_themename_general_options',
-    ));
-
-    /*---------------------------------------------------------------------------
-* End of General Options
-*---------------------------------------------------------------------------*/
 
 
 
@@ -155,6 +116,7 @@ function _themename_customize_register($wp_customize)
         }
     ));
 
+
     /*##################  SINGLE SETTINGS ########################*/
 
     $wp_customize->add_section('_themename_single_blog_options', array(
@@ -182,6 +144,49 @@ function _themename_customize_register($wp_customize)
         global $post;
         return is_single() && $post->post_type === 'post';
     }
+}
+
+/////////////////
+
+function _themename_sanitize_footer_layout()
+{
+    $footer_layout = sanitize_text_field(get_theme_mod('_themename_footer_layout', '3,3,3,3'));
+    $footer_layout = preg_replace('/\s+/', '', $footer_layout);
+    $columns = explode(',', $footer_layout);
+    return $columns;
+}
+
+
+
+function _themename_sanitize_checkbox($checked)
+{
+
+    return (isset($checked) && $checked === true) ? true : false;
+}
+
+
+
+function _themename_sanitize_footer_bg($input)
+{
+    $valid = array('light', 'dark');
+    if (in_array($input, $valid, true)) {
+        return $input;
+    }
+    return 'dark';
+}
+
+
+
+
+
+function _themename_sanitize_site_info($input)
+{
+    $allowed = array('a' => array(
+        'class' => array(),
+        'href' => array(),
+        'title' => array()
+    ));
+    return wp_kses($input, $allowed);
 }
 
 

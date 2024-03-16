@@ -1,5 +1,5 @@
 <?php
-require_once(get_template_directory() . '/lib/customize.php');
+require_once(get_template_directory() . '/lib/customize/customize.php');
 require_once(get_template_directory() . '/lib/helpers.php');
 require_once(get_template_directory() . '/lib/theme-support.php');
 require_once(get_template_directory() . '/lib/enqueue-assets.php');

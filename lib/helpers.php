@@ -48,14 +48,12 @@ function bootstrap_pagination($query = null)
         'prev_text' => __('← Previous'),
         'next_text' => __('Next  →'),
         'type' => 'list',
-        'show_all' => false,
-
-        'mid_size' => 3,
-        'end_size' => 3,
         'total' => $query->max_num_pages,
     ];
     $args = array_replace($query->query_vars,  $default);
     $listString = paginate_links($args);
+
+
 
     // Replace classes and modify pagination structure
     $listString = str_replace("<ul class='page-numbers'>", '<ul class="pagination justify-content-center mt-5">', $listString);

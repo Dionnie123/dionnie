@@ -1,10 +1,8 @@
 <?php
-$columns = _themename_sanitize_footer_layout();
-$footer_bg = _themename_sanitize_footer_bg(get_theme_mod('_themename_footer_bg', 'dark'));
-
-
-
+$columns  = explode(',', get_theme_mod('_themename_footer_layout'));
+$footer_bg =  get_theme_mod('_themename_footer_bg', 'dark');
 $widgets_active = false;
+
 foreach ($columns as $i => $column) {
     if (is_active_sidebar('footer-sidebar-' . ($i + 1))) {
         $widgets_active = true;
@@ -20,7 +18,7 @@ foreach ($columns as $i => $column) {
                 foreach ($columns as $i => $column) {
                     if (is_active_sidebar('footer-sidebar-' . ($i + 1))) {
                 ?>
-                        <div class="col cols-sm-2 cols-md-3 cols-lg-<?php echo $column; ?>">
+                        <div class="col col-<?php echo $column; ?>">
 
                             <?php dynamic_sidebar('footer-sidebar-' . ($i + 1)); ?>
                         </div>
