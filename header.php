@@ -1,7 +1,3 @@
-<?php
-require_once(get_template_directory() . '/lib/custom_menu_walker.php');
-?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> data-bs-theme="darkx">
 
@@ -26,8 +22,7 @@ require_once(get_template_directory() . '/lib/custom_menu_walker.php');
 
             <div class="c-navigation">
                 <div class="container">
-                    <nav class="header-nav primary-navigation" role="navigation"
-                        aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
+                    <nav class="header-nav primary-navigation" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
                         <?php
                         (new \_ThemeName\MenuService)->view();
                         ?>

@@ -2,7 +2,7 @@
 
 namespace _ThemeName;
 
-require_once 'custom_menu_walker.php';
+require_once 'custom-menu-walker.php';
 
 class MenuService
 {
