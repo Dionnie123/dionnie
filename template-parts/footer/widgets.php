@@ -11,26 +11,26 @@ foreach ($columns as $i => $column) {
 
 ?>
 <?php if ($widgets_active) { ?>
-    <div class="p-5">
-        <div class="container">
-            <div class="row gx-5 gy-5">
-                <?php
+<div class="p-5">
+    <div class="container">
+        <div class="row gx-5 gy-5">
+            <?php
                 foreach ($columns as $i => $column) {
                     if (is_active_sidebar('footer-sidebar-' . ($i + 1))) {
                 ?>
-                        <div class="col col-<?php echo $column; ?>">
+            <div class="col col-<?php echo $column; ?>">
 
-                            <?php dynamic_sidebar('footer-sidebar-' . ($i + 1)); ?>
-                        </div>
-                <?php
+                <?php dynamic_sidebar('footer-sidebar-' . ($i + 1)); ?>
+            </div>
+            <?php
                     }
                 }
 
                 ?>
 
-            </div>
         </div>
     </div>
+</div>
 
 
 <?php } ?>

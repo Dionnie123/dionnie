@@ -48,6 +48,8 @@ function bootstrap_pagination($query = null)
         'prev_text' => __('← Previous'),
         'next_text' => __('Next  →'),
         'type' => 'list',
+        'mid_size' => 2,
+        'end_size' => 2,
         'total' => $query->max_num_pages,
     ];
     $args = array_replace($query->query_vars,  $default);

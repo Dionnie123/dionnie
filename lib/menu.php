@@ -4,7 +4,7 @@ namespace _ThemeName;
 
 require_once 'custom-menu-walker.php';
 
-class MenuService
+class Menu
 {
 
     public function __construct()
@@ -36,4 +36,4 @@ class MenuService
     }
 }
 
-(new \_ThemeName\MenuService)->init();
+(new \_ThemeName\Menu)->init();

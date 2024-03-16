@@ -24,7 +24,7 @@
                 <div class="container">
                     <nav class="header-nav primary-navigation" role="navigation" aria-label="<?php esc_html_e('Main Navigation', '_themename') ?>">
                         <?php
-                        (new \_ThemeName\MenuService)->view();
+                        (new \_ThemeName\Menu)->view();
                         ?>
                     </nav>
                 </div>
