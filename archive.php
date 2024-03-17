@@ -1,5 +1,12 @@
 <?php
 
+$layout = _themename_meta( get_the_ID(), '_themename_post_layout', 'full' );
+$sidebar = is_active_sidebar( 'primary-sidebar' );
+if($layout === 'sidebar' && !$sidebar) {
+    $layout = 'full';
+}
+
+
 get_header();
 
 ?>
@@ -12,7 +19,7 @@ get_header();
 
 
 
-            <div class=" <?php echo is_active_sidebar('primary-sidebar') ?  'col-lg-9' : 'col-lg-12'   ?> ">
+            <div class=" <?php $layout == 'sidebar' ?  'col-lg-9' : 'col-lg-12'   ?> ">
 
 
                 <div class="c-archive-page-header">
@@ -27,10 +34,10 @@ get_header();
 
                 <?php get_template_part('template-parts/loops/loop-archive'); ?>
             </div>
-            <?php if (is_active_sidebar('primary-sidebar')) { ?>
-                <div class="col-lg-3">
-                    <?php get_sidebar(); ?>
-                </div>
+            <?php if( $layout === 'sidebar') { ?>
+            <div class="col-lg-3">
+                <?php get_sidebar(); ?>
+            </div>
             <?php } ?>
         </div>
     </div>

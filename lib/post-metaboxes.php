@@ -2,14 +2,14 @@
 
 namespace _ThemeName;
 
-class PostType
+class Post
 {
 
     protected $detail;
 
     public function init()
     {
-        $this->detail = (new PostTypeDetailMetaBox());
+        $this->detail = (new PostDetailMetaBox());
     }
 
     public function get_layout()
@@ -30,7 +30,7 @@ class PostType
 
 
 
-class PostTypeDetailMetaBox
+class PostDetailMetaBox
 {
 
     protected  $author = "_themename_post_author";
@@ -59,9 +59,9 @@ class PostTypeDetailMetaBox
     {
         add_meta_box(
             '_themename_post_detail_metabox', // Unique ID
-            'PostType Details',           // Box title
+            'Post Details',           // Box title
             array($this, '_themename_post_detail_metabox_html'), // Callback function to render the content
-            'post', // PostType type
+            'post', // Post type
             'normal', // Context (normal, advanced, side)
             'high' // Priority (high, core, default, low)
         );
@@ -89,8 +89,9 @@ class PostTypeDetailMetaBox
 
         <label for="<?php echo $this->layout; ?>">Layout:</label>
         <select class="widefat" name="<?php echo $this->layout; ?>" id="<?php echo $this->layout; ?>" value="<?php echo esc_attr($layout); ?>">
+            <option value="">Select Layout</option>
             <option <?php selected($layout, "full") ?> value="full">Full Width</option>
-            <option <?php selected($layout, "sidebar") ?> value="sidebar">PostType with Sidebar</option>
+            <option <?php selected($layout, "sidebar") ?> value="sidebar">With Sidebar</option>
         </select>
 
 <?php
@@ -123,4 +124,4 @@ class PostTypeDetailMetaBox
     }
 }
 
-(new \_ThemeName\PostType)->init();
+(new \_ThemeName\Post)->init();

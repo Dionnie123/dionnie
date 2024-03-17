@@ -107,3 +107,13 @@ function _themename_private_metakey($text)
 
     return $text;
 }
+
+
+function _themename_meta($id, $key, $default)
+{
+    $value = get_post_meta($id, $key, true);
+    if (!$value && $default) {
+        return $default;
+    }
+    return $value;
+}

@@ -18,4 +18,4 @@ jQuery(document).ready(function ($) {
   });
 });
 
-console.log("bundle.js ✔️x");
+console.log("bundle.js ✔️");

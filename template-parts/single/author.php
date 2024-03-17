@@ -7,7 +7,7 @@ if ($show_author) {
 ?>
 
 
-    <div class="c-post__author ">
+    <div class="c-post-author ">
         <h2 class="u-screen-reader-text"><?php esc_attr_e('About The Author', '_themename'); ?></h2>
         <?php
         $author_id = get_the_author_meta('ID');

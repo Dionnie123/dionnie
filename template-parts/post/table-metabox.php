@@ -3,17 +3,17 @@
     <tbody>
         <tr>
             <th>Layout</th>
-            <td><?php echo (new \_ThemeName\PostType)->get_layout()  ?></td>
+            <td><?php echo (new \_ThemeName\Post)->get_layout()  ?></td>
         </tr>
         <tr>
             <th>Author</th>
-            <td><?php echo (new \_ThemeName\PostType)->get_author()  ?></td>
+            <td><?php echo (new \_ThemeName\Post)->get_author()  ?></td>
             </td>
         </tr>
 
         <tr>
             <th>Date</th>
-            <td><?php echo (new \_ThemeName\PostType)->get_date()  ?></td>
+            <td><?php echo (new \_ThemeName\Post)->get_date()  ?></td>
             </td>
         </tr>
 
