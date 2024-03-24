@@ -1,13 +1,10 @@
-.widget_recent_entries li {
-  list-style-type: none;
-  background: $dark;
-  border-radius: 5px;
-  padding: 8px;
-  & > a {
-    color: white !important;
-  }
+.widget_recent_entries {
+  @extend .clean-list-x;
 
-  &:not(:last-child) {
-    margin-bottom: 8px;
+  li {
+    color: white !important;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
   }
 }

@@ -1,3 +1,26 @@
+.clean-list-x {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  margin: 0;
+  a {
+    text-decoration: none;
+  }
+}
+
+.clean-list-y {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0;
+  a {
+    text-decoration: none;
+  }
+}
+
 .u-screen-reader-text {
   position: absolute;
   left: -10000px;

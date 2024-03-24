@@ -73,6 +73,8 @@ class CustomMenuWalker extends Walker_Nav_Menu
 }
 
 
+
+
 //Menu Custom Walker fix
 add_filter('wp_nav_menu_args', function ($args) {
     if (isset($args['walker']) && is_string($args['walker']) && class_exists($args['walker'])) {

@@ -1,74 +1,65 @@
-.c-navigation {
-  $bg: white;
+.c-navigation__main-menu {
+  @extend .clean-list-x;
 
-  &__main-menu {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 50;
-    white-space: nowrap;
-    > li {
-      padding: 10px;
-      display: inline;
+  .menu-item {
+    a {
+      color: white;
+      white-space: nowrap;
+    }
 
-      &:hover > .c-navigation__sub-menu {
-        visibility: visible;
-      }
+    &.current-menu-item {
+      background: $secondary;
+      color: white !important;
+      border-radius: 40px 0px;
+      padding: 15px;
+    }
 
-      > a {
+    &:hover {
+      & > .sub-menu {
         display: block;
-        color: white;
       }
     }
   }
 
-  &__sub-menu.sub-menu-level-0 {
-    padding: 0;
-    visibility: hidden;
-    list-style: none;
-    background: $bg;
-    text-align: start;
-    box-shadow: 0px 3px 5px -1px #ccc;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    z-index: 99;
-    border-radius: 4px;
+  .sub-menu {
+    @extend .clean-list-y;
+    background-color: white;
 
-    > li {
-      display: inline;
-      padding: 8px 20px;
-
-      &:hover > .c-navigation__sub-menu {
-        visibility: visible;
-      }
-    }
-  }
-
-  &__sub-menu.sub-menu-level-1 {
-    padding: 0;
-    box-shadow: 0px 3px 5px -1px #ccc;
+    border: 1px solid grey;
     position: absolute;
-    left: 100%;
-    top: 0;
-    visibility: hidden;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    z-index: 0;
-    background: $bg;
-    border-radius: 4px;
+    z-index: 1;
+    padding: 0;
+    display: none;
 
-    > li {
-      padding: 8px 20px;
-      display: inline;
+    .menu-item {
+      a {
+        display: block;
+        padding: 10px 20px;
+        color: black;
 
-      &:hover > .c-navigation__sub-menu {
-        visibility: visible;
+        &:hover {
+          background: $primary;
+          color: white !important;
+        }
       }
+    }
+
+    .current-menu-item,
+    .current-menu-ancestor {
+      & > a {
+        background: $primary;
+        color: white !important;
+      }
+    }
+
+    .menu-item-has-children {
+      position: relative;
+    }
+
+    .sub-menu {
+      position: absolute;
+      left: 100%;
+      top: 0;
     }
   }
 }

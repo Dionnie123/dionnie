@@ -11,7 +11,6 @@ function _themename_customize_register($wp_customize)
     {
         return (isset($checked) && $checked === true) ? true : false;
     }
-
     require_once(get_template_directory() . '/lib/customize/single-post.php');
     require_once(get_template_directory() . '/lib/customize/site-identity.php');
     require_once(get_template_directory() . '/lib/customize/general-options.php');

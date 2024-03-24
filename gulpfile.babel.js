@@ -94,7 +94,6 @@ export const pot = () => {
 export const styles = () => {
   return src(paths.styles.src)
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
-
     .pipe(sass().on("error", sass.logError))
     .pipe(gulpif(PRODUCTION, postcss([autoprefixer])))
     .pipe(gulpif(PRODUCTION, cleanCss({ compatibility: "ie8" })))
@@ -142,6 +141,7 @@ export const images = () => {
 
 export const watchChanges = () => {
   watch("src/assets/scss/**/*.scss", styles);
+  // watch("src/assets/scss/**/*.scss", series(styles, reload));
   watch("src/assets/js/**/*.js", series(scripts, reload));
   watch("**/*.php", reload);
   watch(paths.images.src, series(images, reload));
@@ -203,7 +203,7 @@ export const delete_replaced_filenames = () => {
 
 export const serve = (done) => {
   server.init({
-    proxy: "http://provider.com/",
+    proxy: "http://provider.test/",
   });
   done();
 };
