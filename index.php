@@ -13,7 +13,7 @@ get_header();
 
 
             <div class=" <?php echo is_active_sidebar('primary-sidebar') ?  'col-lg-9' : 'col-lg-12'   ?> ">
-
+                <?php the_content(); ?>
 
                 <div class="card p-3">
                     <figure class="mb-0">

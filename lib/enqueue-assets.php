@@ -8,12 +8,23 @@ function _themename_assets()
     include(get_template_directory() . '/lib/inline-css.php');
     wp_add_inline_style('_themename-stylesheet', $inline_styles);
 
+
+
+
     wp_enqueue_script('_themename-scripts',  get_template_directory_uri() . '/dist/assets/js/bundle.js', array('jquery'), rand(0, 9999), true); //this must be the last js to be added
 
 
 
 }
+
+function x()
+{
+    wp_enqueue_style('custom-editor-style',  get_template_directory_uri() . '/dist/assets/css/bundle.css', array(), rand(0, 9999), 'all');
+}
+
+//add_action('elementor/editor/after_enqueue_styles', 'x');
 add_action('wp_enqueue_scripts', '_themename_assets');
+
 
 
 function _themename_admin_assets()

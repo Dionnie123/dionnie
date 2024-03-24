@@ -4,6 +4,8 @@
 
 
         <div class="card-body">
+            <h1>DDDDD</h1>
+            <?php echo do_shortcode('[elementor-template id="2234"]') ?>
             <h5 class="card-title"><?php esc_html(the_title()); ?></h5>
             <p class="card-text">
                 <?php echo wp_kses_post(wp_trim_words(get_the_excerpt(), 15)); // Limit excerpt to 15 words 

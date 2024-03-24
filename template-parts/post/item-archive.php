@@ -1,6 +1,6 @@
 <article <?php post_class('c-post col') ?>>
     <div class="card h-100">
-
+        <?php echo do_shortcode('[elementor-template id="2234"]') ?>
         <?php if (has_post_thumbnail()) : ?>
         <img style="min-height: 180px;max-height: 180px; object-fit: cover;"
             src="<?php the_post_thumbnail_url('medium'); ?>" class="card-img-top"
