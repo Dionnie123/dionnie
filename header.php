@@ -31,7 +31,10 @@
             </div>
 
             <div class="text-end">
-                <?php get_search_form(true) ?>
+                <?php get_search_form(true);
+
+
+                ?>
             </div>
         </div>
     </div>

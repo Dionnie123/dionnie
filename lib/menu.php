@@ -2,7 +2,7 @@
 
 namespace _ThemeName;
 
-require_once 'custom-menu-walker.php';
+
 
 class Menu
 {
@@ -28,7 +28,7 @@ class Menu
             wp_nav_menu(array(
                 'menu_class'     => 'c-navigation__main-menu',
                 'theme_location' => 'main-menu',
-                // 'walker' =>  'Custom_Menu_Walker',
+
             ));
         } else {
             echo 'No menu available';
